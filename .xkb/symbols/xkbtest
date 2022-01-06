@@ -1,0 +1,187 @@
+partial alphanumeric_keys
+xkb_symbols "homerow" {
+
+/////////
+// TOPROW
+/////////
+
+// Q //
+replace key <AD01> {
+	type="EIGHT_LEVEL",
+	symbols[Group1] = [ q, Q, asciitilde, asciitilde, asciitilde ]
+	};
+// W //
+replace key <AD02> {
+	type="EIGHT_LEVEL",
+	symbols[Group1] = [ w, W, grave, grave, grave ]
+	};
+// E //
+replace key <AD03> {
+	type="EIGHT_LEVEL",
+	symbols[Group1] = [ e, E, bar, bar, bar ]
+	};
+// R //
+replace key <AD04> {
+	type="EIGHT_LEVEL",
+	symbols[Group1] = [ r, R, backslash, backslash, backslash ]
+	};
+// T //
+replace key <AD05> {
+	symbols[Group1] = [ t, T ]
+	};
+// Y //
+replace key <AD06> {
+	symbols[Group1] = [ y, Y ]
+	};
+// U //
+replace key <AD07> {
+	type="EIGHT_LEVEL",
+	symbols[Group1] = [ u, U, u, U, KP_7 ]
+	};
+// I //
+replace key <AD08> {
+	type="EIGHT_LEVEL",
+	symbols[Group1] = [ i, I, bracketleft, bracketleft, KP_8 ]
+	};
+// O //
+replace key <AD09> {
+	type="EIGHT_LEVEL",
+	symbols[Group1] = [ o, O, bracketright, bracketright, KP_9 ]
+	};
+// P //
+replace key <AD10> {
+	type="EIGHT_LEVEL",
+	symbols[Group1] = [ p, P, apostrophe, apostrophe, Pointer_EnableKeys ]
+	};
+	
+//////////
+// HOMEROW
+//////////
+
+// A //
+replace key <AC01> {
+	type="EIGHT_LEVEL",
+	symbols[Group1] = [ a, A, exclam, exclam, 1 ]
+	};
+// S //
+replace key <AC02> {
+	type="EIGHT_LEVEL",
+	symbols[Group1] = [ s, S, at, at, 2 ]
+	};
+// D //
+replace key <AC03> {
+	type="EIGHT_LEVEL",
+	symbols[Group1] = [ d, D, numbersign, numbersign, 3 ]
+	};
+// F //
+replace key <AC04> {
+	type="EIGHT_LEVEL",
+	symbols[Group1] = [ f, F, dollar, dollar, 4 ]
+	};
+// G //
+replace key <AC05> { 
+	type="EIGHT_LEVEL",
+	symbols[Group1] = [ g, G, percent, percent, 5 ]
+	};
+// H //
+replace key <AC06> { 
+	type="EIGHT_LEVEL",
+	symbols[Group1] = [ h, H, asciicircum, Left, KP_Add ]
+	};
+// J //
+replace key <AC07> { 
+	type="EIGHT_LEVEL",
+	symbols[Group1] = [ j, J, ampersand, Down, KP_4 ]
+	};
+// K // 	
+replace key <AC08> {
+	type="EIGHT_LEVEL",
+	symbols[Group1] = [ k, K, asterisk, Up, KP_5 ]
+	};
+// L //
+replace key <AC09> {
+	type="EIGHT_LEVEL",
+	symbols[Group1] = [ l, L, parenleft, Right, KP_6 ]
+	};
+// ; //	
+replace key <AC10> {
+	type="EIGHT_LEVEL",
+	symbols[Group1] = [ semicolon, colon, parenright, parenright, KP_Multiply ]
+	};
+// ' // NOOOOO!!!!!!!!!!!!
+replace key <AC11> {
+	type="EIGHT_LEVEL",
+	symbols[Group1]= [ Return, BackSpace, Escape, Escape, KP_Decimal, KP_Enter, KP_Decimal ]
+	//symbols=[apostrophe, quotedbl, minus, minus ]
+	};
+// Enter //
+replace key <RTRN> {
+	type="EIGHT_LEVEL",
+	symbols[Group1]= [ Return, BackSpace, Escape, Escape, KP_Decimal, KP_Enter, KP_Decimal ]
+	};
+
+////////////
+// BOTTOMROW
+////////////
+
+// Z //
+replace key <AB01> {
+	type="EIGHT_LEVEL",
+	symbols[Group1] = [ z, Z, z, Z, 6 ]
+	};
+// X //
+replace key <AB02> {
+	type="EIGHT_LEVEL",
+	symbols[Group1] = [ x, X, x, X, 7 ]  // Prior == PageUp
+	};
+// C //
+replace key <AB03> {
+	type="EIGHT_LEVEL",
+	symbols[Group1] = [ c, C, c, C, 8 ]
+	};
+// V //
+replace key <AB04> {
+	type="EIGHT_LEVEL",
+	symbols[Group1] = [ v, V, v, V, 9 ]
+	};
+// B //
+replace key <AB05> {
+	type="EIGHT_LEVEL",
+	symbols[Group1] = [ b, B, b, B, 0 ]
+	};
+// N //
+replace key <AB06> {
+	type="EIGHT_LEVEL",
+	symbols[Group1] = [ n, N, quotedbl, quotedbl, KP_Subtract ]
+	};
+// M //
+replace key <AB07> {
+	type="EIGHT_LEVEL",
+	symbols[Group1] = [m, M, plus, plus, KP_1 ]
+	};
+// ,< //
+replace key <AB08> {
+	type="EIGHT_LEVEL",
+	symbols[Group1] = [ comma, less, equal, equal, KP_2 ]
+	};
+// .> //
+replace key <AB09> {
+	type="EIGHT_LEVEL",
+	symbols[Group1] = [ period, greater, braceleft, braceleft, KP_3 ]
+	};
+// /? //
+replace key <AB10> {
+	type="EIGHT_LEVEL",
+	symbols[Group1] = [ slash, question, braceright, braceright, KP_Divide ]
+};
+
+///////////
+// SPACEROW
+///////////
+
+// Space //
+replace key <SPCE> {
+	type="EIGHT_LEVEL",
+	symbols[Group1] = [ space, underscore, minus, minus, KP_0 ]
+	};
+};

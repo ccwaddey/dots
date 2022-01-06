@@ -1,0 +1,14 @@
+xkb_keymap {
+	xkb_keycodes  { include "xfree86+aliases(qwerty)"	};
+	xkb_types     { include "complete"	};
+	xkb_compat    { include "complete+lights"
+		      	//include "mousekeys"
+		      };
+	xkb_symbols   { include "pc+us+myswaps(rotate)" 
+		      	//include "mygroup(switch)"
+			include "xkbtest(homerow)"
+			include "terminate(ctrl_alt_bksp)"
+			//include "level5(lwin_switch_lock)"
+			};
+	xkb_geometry  { include "pc(pc105)"	};
+};

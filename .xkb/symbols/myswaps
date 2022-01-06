@@ -1,0 +1,27 @@
+partial modifier_keys
+xkb_symbols "rotate" {
+	    replace key <CAPS> { [ Control_L ] };
+	    key <LWIN> {
+	    	type[Group1]="ONE_LEVEL",
+		symbols[Group1]=[ISO_Level5_Shift]
+	    };
+	    key <RWIN> {
+	    	type[Group1]="ONE_LEVEL",
+		symbols[Group1]=[ISO_Level5_Shift]
+	    };
+	    // key <RTSH> {
+	    // 	type[Group1]="ONE_LEVEL",
+	    // 	symbols[Group1]=[ISO_Level5_Shift]
+	    // };
+	    key <LCTL> {
+	    	type[Group1]="ONE_LEVEL",
+		symbols[Group1] = [ ISO_Level3_Shift ]
+	    };
+	    key <RALT> {
+	    	type[Group1]="ONE_LEVEL",
+		symbols[Group1]=[ISO_Level3_Shift]
+	    };
+	    replace key <RCTL> { [ Caps_Lock ] };
+	    include "level3(modifier_mapping)"
+	    include "level5(modifier_mapping)"
+};

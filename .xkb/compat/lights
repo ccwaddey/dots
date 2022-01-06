@@ -1,0 +1,16 @@
+
+
+default partial xkb_compatibility "pretty" {
+	indicator "Scroll Lock" {
+		  indicatorDrivesKeyboard;
+		  controls= mouseKeys;
+	};
+
+	indicator "Num Lock" {
+		  modifiers= Mod5;
+	};
+
+	indicator "Caps Lock" {
+		  modifiers= Mod3;
+	};
+};
