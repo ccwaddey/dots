@@ -1,0 +1,22 @@
+# public info .gitconfig
+
+[include]
+	path = ~/.priv/.gitconfig
+
+[core]
+	editor = emacsclient -a mg
+	pager = less
+
+[init]
+	defaultBranch = master
+	
+[alias]
+	st = status
+	sw = switch
+	br = branch
+	cmt = commit
+	co = checkout
+	unstage = restore --staged
+	unmodify = restore
+	alias = config --get-regex 'alias\\..*'
+	tree = log --oneline --decorate --graph --all
