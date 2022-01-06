@@ -1,0 +1,8 @@
+#! /bin/sh
+
+xset b && xkbbell && xset -b
+
+if xmessage -timeout 15 -buttons Cancel:1 "System suspending in 15 seconds" 2>/dev/null
+then
+	xlock & apm -S
+fi

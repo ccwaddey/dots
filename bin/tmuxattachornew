@@ -1,0 +1,10 @@
+#!/bin/sh
+
+tmux list-sessions >/dev/null 2>&1
+if [ $? -eq 0 ]
+then
+    exec tmux -2 attach
+else
+    exec tmux -2
+fi
+
