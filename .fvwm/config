@@ -39,17 +39,17 @@ AddToFunc   StartFunction
 + I Module FvwmButtons RightPanel
 + I Module FvwmEvent EventNewDesk
 + I Module FvwmEvent EventNewPage
-+ I Exec exec xkbcomp -I/home/me/.xkb/ /home/me/.xkb/keymap/xkbtest $DISPLAY
++ I Exec exec xkbcomp -I$HOME/.xkb/ $HOME/.xkb/keymap/xkbtest $DISPLAY
 + I GotoPage 0 0
 
 DestroyFunc InitFunction
 AddToFunc   InitFunction
 #+ I Exec exec zathura /home/me/pdfs/cs/specs/xlib.pdf
-+ I Exec exec env LC_CTYPE=en_US.UTF-8 emacs
++ I Exec exec emacs
 + I Exec exec xwallpaper --stretch $[FVWM_USERDIR]/foggc.png
-#+ I Exec exec env LC_CTYPE=en_US.UTF-8 xterm -e \
- # /home/me/bin/tmuxattachornew
-+ I Exec exec xidle -no -timeout 540 -program "/home/me/bin/mysuspend"
++ I Exec exec env LC_CTYPE=en_US.UTF-8 xterm -e \
+  /home/me/bin/tmuxattachornew
++ I Exec exec xidle -no -timeout 540 -program "$HOME/bin/mysuspend"
 
 # Mouse Bindings Functions
 DestroyFunc RaiseMoveX
@@ -208,7 +208,7 @@ Style ConfirmQuit !Title, PositionPlacement Center, WindowListSkip, Layer 6
 Style FvwmIdent WindowListSkip
 Style $[infostore.terminal] !Title, Borders, StartsOnPage 0 0
 Style Xterm !Title, Borders, StartsOnPage 0 0
-Style Emacs !Title, Borders, Handles, StartsOnPage 0 1
+Style Emacs !Title, Borders, Handles, StartsOnPage 0 0
 Style Firefox !Title, !Borders, StartsOnPage 0 1, SkipMapping
 Style "Tor Browser" StartsOnPage 0 1, SkipMapping, !Title
 Style FvwmPager Sticky, StaysOnBottom
@@ -274,12 +274,12 @@ DestroyMenu MenuFvwmRoot
 AddToMenu   MenuFvwmRoot "Fvwm" Title
 #+ "&Programs%icons/programs.png%" Popup MenuPrograms
 #+ "XDG &Menu%icons/apps.png%" Popup XDGMenu
-+ "Terminal%icons/xterm.png%" Exec exec env LC_CTYPE=en_US.UTF-8 xterm
-+ "&Firefox%icons/firefox.png%" Exec exec firefox -offline
-+ "&Tor-Browser%icons/tor16.png%" Exec exec tor-browser
-+ "&Emacs%icons/emacs.png%" Exec exec emacs
++ "Terminal%$[FVWM_USERDIR]/xterm.png%" Exec exec env LC_CTYPE=en_US.UTF-8 xterm
++ "&Firefox%$[FVWM_USERDIR]/firefox.png%" Exec exec firefox -offline
++ "&Tor-Browser%$[FVWM_USERDIR]/tor16.png%" Exec exec tor-browser
++ "&Emacs%$[FVWM_USERDIR]/emacs.png%" Exec exec emacs
 # + "&Zathura%icons/zathura.png%" Exec exec zathura
-+ "Kic&ad%icons/kicad.png%" Exec exec kicad
++ "Kic&ad%$[FVWM_USERDIR]/kicad.png%" Exec exec kicad
 + "" Nop
 + "Fvwm&Console%icons/terminal.png%" Module FvwmConsole -terminal $[infostore.terminal]
 + "Window&Ops%icons/apps.png%" Popup MenuWindowOps

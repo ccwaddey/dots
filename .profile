@@ -55,12 +55,11 @@ export EDITOR="emacsclient -a mg"
 export VISUAL="emacsclient -a mg"
 SMTPD='/usr/src/usr.sbin/smtpd'
 
+. ~/.priv/.alias
 alias ls="ls -AF"
 alias u='sndioctl output.level=+.1'
 alias d='sndioctl output.level=-.1'
 alias mute='sndioctl output.level=0'
-. ~/.priv/.alias
-alias gi='gethip && getip'
 alias g="git --no-pager"
 alias tmux='tmux -2'
 alias kls='ls | sort -t "-" -k2'

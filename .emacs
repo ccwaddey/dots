@@ -273,7 +273,8 @@
  '(initial-scratch-message "")
  '(menu-bar-mode nil)
  '(org-catch-invisible-edits 'show-and-error)
- '(package-selected-packages '(pdf-tools gh-md rust-mode multiple-cursors smex))
+ '(package-selected-packages
+   '(markdown-mode pdf-tools gh-md rust-mode multiple-cursors smex))
  '(pdf-view-continuous t)
  '(rcirc-authinfo nil)
  '(rcirc-server-alist '(("chat.freenode.net" :channels ("#openbsd"))))
