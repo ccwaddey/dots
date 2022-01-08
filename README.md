@@ -2,24 +2,24 @@
 
 ## Install packages
 
-git remote add origin git@github.com:ccwaddey/dots.git
-git push origin master
-
 (The syntax for the flavors of some of these packages might be wrong.)
 
-doas pkg_add autoconf-2.69p3 automake-1.15.1 emacs-gtk3 firefox fvwm2 \
-	git gnupg ispell mutt-gpgme-sasl poppler poppler-utils xclip xwallpaper 
+    $ doas pkg_add autoconf-2.69p3 automake-1.15.1 emacs-gtk3 firefox \
+	fvwm2 git gnupg ispell mutt-gpgme-sasl poppler-21.12.0 \
+	poppler-utils-21.12.0 urlview xclip xwallpaper
+
+The packages with versions I'm not totally sure if they need versions,
+but if pkg_add asks, choose the one given. The flavors for mutt and
+emacs are necessary.
 
 ## Getting the configs
 
-git clone --bare https://github.com/ccwaddey/dots.git $HOME/.dots
+    git clone --bare https://github.com/ccwaddey/dots.git $HOME/.dots
+    alias dg='`which git` --git-dir=$HOME/.dots/ --work-tree=$HOME'
+    dg checkout
 
-alias dg='`which git` --git-dir=$HOME/.dots/ --work-tree=$HOME'
-
-dg checkout
-
-Note that the typical /etc/skel dotfiles include .profile and
-.Xdefaults, which you'll need to either delete or backup if you want
+Note that the typical `/etc/skel` dotfiles include `.profile` and
+`.Xdefaults`, which you'll need to either delete or backup if you want
 this to go smoothly.
 
 ## After getting the configs
@@ -30,34 +30,36 @@ screen resolution (and maybe other stuff):
 ### .Xdefaults
 
 These lines I had to add to make xterm work with my keyboard config:
-                     Shift <Key>KP_Add: insert() \n\
-                     Shift <Key>KP_Subtract: insert() \n\
+
+	Shift <Key>KP_Add: insert() \n\
+    Shift <Key>KP_Subtract: insert() \n\
 
 This line will need to be adjusted to center the suspend message (note
 that the message window is 233x52 on my display):
-xmessage*geometry:      +554+258
+
+    xmessage*geometry:      +554+258
 
 ### .eksh
 
-You might want to change CVSROOT and PKG_PATH to closer
-mirrors. You'll also want to create a .priv directory and add a .alias
-file to it for any private aliases.
+You might want to change `CVSROOT` and `PKG_PATH` to closer
+mirrors. You'll also want to create a `.priv` directory and add a
+`.alias` file to it for any private aliases.
 
 ### .emacs
 
-The first time you open up emacs, pdf-tools will try to install. This
+The first time you open up emacs, `pdf-tools` will try to install. This
 wasn't too hard for me to figure out, but your mileage may
 vary. Installing all the packages listed at the beginning of this
-README will help. You'll then have to restart emacs to use pdf-tools.
+README will help. You'll then have to restart emacs to use `pdf-tools`.
 
-The emacs packages that I have installed currently are gh-md,
-markdown-mode, multiple-cursors, pdf-tools, rust-mode, and smex. I
-believe these will be pulled in by the file.
+The emacs packages that I have installed currently are `gh-md`,
+`markdown-mode`, `multiple-cursors`, `pdf-tools`, `rust-mode`, and
+`smex`. I believe these will be pulled in by the file.
 
 Depending on the resolution of your display, you'll have to adjust the
-":height 200" part of custom-set-faces.
+`:height 200` part of custom-set-faces.
 
-Add a .emacs.el file to your .priv directory.
+Add a `.emacs.el` file to your `.priv` directory.
 
 ### .fvwm/FvwmScript-mydatetime
 
@@ -71,14 +73,15 @@ if needed.
 ### .fvwm/config
 
 This assumes your terminal is xterm. You need xwallpaper installed to
-set the wallpaper. Comment out the xkbcomp lines if you don't want to
+set the wallpaper. Comment out the `xkbcomp` line if you don't want to
 use my keyboard layout (which most people won't want).
 
-There are certain shell scripts that get put in ~/bin that this config
-needs to run. They are tmuxattachornew and mysuspend.
+There are certain shell scripts that get put in `~/bin` that this config
+needs to run. They are `tmuxattachornew` and `mysuspend`.
 
 You'll have to adjust the font sizes depending on your
-resolution. Just search for font and adjust to your liking.
+resolution. Just search for font and adjust to your liking. This is
+set up for a 1360x768.
 
 Adjust the RightPanel module configuration for your resolution, along
 with FvwmScript-mydatetime.
@@ -88,22 +91,29 @@ mysuspend enabled.
 
 ### .gitconfig
 
-Add a .gitconfig file to your .priv directory.
+Add a `.gitconfig` file to your `.priv` directory.
 
 ### .muttrc
 
 This file will be harmless if you don't download mutt, but be prepared
 to do some configuring if you do, specifically adding a .muttrc file
-to your .priv directory.
+to your .priv directory. The packages gnupg, mutt, and urlview are for
+this config.
 
 ### .profile
 
-Basically the same advice as for .eksh. Add a .alias file to your
-.priv directory and adjust PKG_PATH and CVSROOT to your liking.
+Basically the same advice as for .eksh. Add a `.alias` file to your
+`.priv` directory and adjust `PKG_PATH` and `CVSROOT` to your liking.
 
 ### .tmux.conf
 
 You need to have xclip installed to get copy/paste working right.
+
+### .urlview
+
+This requires urlview.sh in bin. You should also run 
+
+    mkdir .linksurlview
 
 ### .xkb/*
 
@@ -114,21 +124,30 @@ you're keyboard layout. Just comment out one line in .fvwm.
 
 Compile testhash.c with
 
-cc -Wall testhash.c -o testhash
+    cc -Wall testhash.c -o testhash
 
-### .xenodm
+You don't need to do this unless you want to see what password hashes
+look like.
 
-In /etc/X11/xenodm, xenodm-config is set up to run Xsetup_0 after
-reset (or first), then runs GiveConsole (as root) after you
-successfully login.
+### .xenodm/*
 
-You need to download the xenocara source code before running make &&
-doas make install (mymake shell script)
+If you just want .xenodm to kinda look like fvwm when you log in, just
+cd into this directory and run `make && doas make install`.
 
-TODO: 
+If you want the fancy underline cursor instead of the default, then
+download xenocara.tar.gz (to your home directory in this example);
+make sure you have added yourself to the wsrc group with
 
-We need to put myxidle and foggc.png in /etc/X11/xenodm.  Create a
-makefile in .xenodm that will install the above two files where they
-should go (as well as the three modified normal xenodm config files)
-and patch the source code for xenodm, and make and install that as
-well.
+    doas user mod -G wsrc $(whoami)
+
+and then logged out and logged back in; and run 
+
+    doas mkdir /usr/xenocara
+	chgrp wsrc /usr/xenocara
+	chmod 775 /usr/xenocara
+	cd /usr/xenocara
+	tar xzf ~/xenocara.tar.gz
+	cvs up
+
+Then `cd ~/.xenodm` and run `make patch` and `make mymake`. After
+updating the system you can simply run `make mymake`.
