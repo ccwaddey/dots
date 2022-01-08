@@ -48,7 +48,7 @@ AddToFunc   InitFunction
 + I Exec exec emacs
 + I Exec exec xwallpaper --stretch $[FVWM_USERDIR]/foggc.png
 + I Exec exec env LC_CTYPE=en_US.UTF-8 xterm -e \
-  /home/me/bin/tmuxattachornew
+  $HOME/bin/tmuxattachornew
 + I Exec exec xidle -no -timeout 540 -program "$HOME/bin/mysuspend"
 
 # Mouse Bindings Functions
