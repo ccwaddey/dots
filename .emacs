@@ -21,29 +21,6 @@
   (save-buffers-kill-terminal))
 (global-set-key (kbd "C-x C-c") 'ccw-exit)
 
-(pdf-tools-install)
-
-(require 'ido)
-(ido-mode t)
-
-(require 'package)
-(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
-(package-initialize)
-
-(require 'smex)
-(smex-initialize)
-(global-set-key (kbd "M-x") 'smex)
-(global-set-key (kbd "M-X") 'smex-major-mode-commands)
-;; This is your old M-x.
-(global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
-
-(require 'multiple-cursors)
-(define-prefix-command 'mc-map)
-(global-set-key (kbd "C-c m") 'mc-map)
-(define-key mc-map (kbd "e") 'mc/edit-lines)
-(define-key mc-map (kbd "m") 'mc/mark-next-like-this)
-(define-key mc-map (kbd "p") 'mc/mark-previous-like-this)
-
 (defun latex-frac (numer denom)
   "Makes a \\frac{}{} command by prompting the user."
   (interactive "sEnter numerator: \nsEnter denominator: ")
@@ -306,5 +283,28 @@
 (split-window-right)
 (other-window 1)
 (shell)
+
+(pdf-tools-install)
+
+(require 'ido)
+(ido-mode t)
+
+(require 'package)
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
+(package-initialize)
+
+(require 'smex)
+(smex-initialize)
+(global-set-key (kbd "M-x") 'smex)
+(global-set-key (kbd "M-X") 'smex-major-mode-commands)
+;; This is your old M-x.
+(global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
+
+(require 'multiple-cursors)
+(define-prefix-command 'mc-map)
+(global-set-key (kbd "C-c m") 'mc-map)
+(define-key mc-map (kbd "e") 'mc/edit-lines)
+(define-key mc-map (kbd "m") 'mc/mark-next-like-this)
+(define-key mc-map (kbd "p") 'mc/mark-previous-like-this)
 
 (load "~/.priv/.emacs")

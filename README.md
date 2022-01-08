@@ -2,17 +2,26 @@
 
 ## Install packages
 
-(The syntax for the flavors of some of these packages might be wrong.)
+    doas pkg_add autoconf automake emacs firefox \
+		fvwm2 git gnupg ispell mutt poppler \
+		poppler-utils urlview xclip xwallpaper
 
-    $ doas pkg_add autoconf-2.69p3 automake-1.15.1 emacs-gtk3 firefox \
-	fvwm2 git gnupg ispell mutt-gpgme-sasl poppler-21.12.0 \
-	poppler-utils-21.12.0 urlview xclip xwallpaper
+pkg_add will ask you some questions about flavors/versions. When it
+does, answer with the following:
 
-The packages with versions I'm not totally sure if they need versions,
-but if pkg_add asks, choose the one given. The flavors for mutt and
-emacs are necessary.
+- autoconf: 2.69p3 (or whatever is closest, the patch might be higher)
+- automake: 1.15.1 (or whatever is closest, there may be a patch)
+- emacs: use the gtk3 flavor (maybe it will be gtk4 or higher at some
+  point)
+- firefox: I don't recommend the ESR versions; use whatever language
+  you want
+- mutt: use the gpgme-sasl version
+- poppler: 21.12.0 (or higher if no options)
+- poppler-utils: 21.12.0 (or higher if no options)
 
 ## Getting the configs
+
+Run the following in a terminal:
 
     git clone --bare https://github.com/ccwaddey/dots.git $HOME/.dots
     alias dg='`which git` --git-dir=$HOME/.dots/ --work-tree=$HOME'
