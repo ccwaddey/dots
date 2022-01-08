@@ -44,7 +44,6 @@ AddToFunc   StartFunction
 
 DestroyFunc InitFunction
 AddToFunc   InitFunction
-#+ I Exec exec zathura /home/me/pdfs/cs/specs/xlib.pdf
 + I Exec exec emacs
 + I Exec exec xwallpaper --stretch $[FVWM_USERDIR]/foggc.png
 + I Exec exec env LC_CTYPE=en_US.UTF-8 xterm -e \
@@ -626,7 +625,7 @@ DestroyModuleConfig RightPanel:*
 #Test (!x stalonetray) PipeRead 'echo "*RightPanel: (120x$(($[vp.height]-205)),\
 #    Top, Swallow FvwmIconMan \'Module FvwmIconMan\', Frame 0)"'
 *RightPanel: (1140x15, Swallow DateTime \
-	     'Module FvwmScript /home/me/.fvwm/FvwmScript-mydatetime', Frame 0)
+	     'Module FvwmScript $HOME/.fvwm/FvwmScript-mydatetime', Frame 0)
 #*RightPanel: (120x5, Frame 0)
 
 # FvwmPager

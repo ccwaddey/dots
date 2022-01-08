@@ -280,18 +280,14 @@
 (put 'upcase-region 'disabled nil)
 (put 'downcase-region 'disabled nil)
 
-(split-window-right)
-(other-window 1)
-(shell)
-
-(pdf-tools-install)
-
 (require 'ido)
 (ido-mode t)
 
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
 (package-initialize)
+
+(pdf-tools-install)
 
 (require 'smex)
 (smex-initialize)
@@ -308,3 +304,7 @@
 (define-key mc-map (kbd "p") 'mc/mark-previous-like-this)
 
 (load "~/.priv/.emacs")
+
+(split-window-right)
+(other-window 1)
+(shell)
