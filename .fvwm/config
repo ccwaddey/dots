@@ -625,7 +625,7 @@ DestroyModuleConfig RightPanel:*
 #Test (!x stalonetray) PipeRead 'echo "*RightPanel: (120x$(($[vp.height]-205)),\
 #    Top, Swallow FvwmIconMan \'Module FvwmIconMan\', Frame 0)"'
 *RightPanel: (1140x15, Swallow DateTime \
-	     'Module FvwmScript $HOME/.fvwm/FvwmScript-mydatetime', Frame 0)
+	     'Module FvwmScript $[FVWM_USERDIR]/FvwmScript-mydatetime', Frame 0)
 #*RightPanel: (120x5, Frame 0)
 
 # FvwmPager
