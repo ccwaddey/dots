@@ -31,6 +31,9 @@ then
 elif [ "arecord.sh" = `basename $0` ]
 then
     xkbbell && sleep 1 && ffmpeg -n -f sndio -i snd/1 -acodec mp3 $1
+elif [ "compress.sh" = `basename $0` ]
+then
+    ffmpeg -i $1 -c:v libx264 -c:a copy ${1%.*}.mkv
 fi
      
 xset -b

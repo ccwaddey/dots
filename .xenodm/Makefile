@@ -13,6 +13,3 @@ install:
 patch:
 	patch /usr/xenocara/app/xenodm/greeter/Login.c Login.c.diff
 	install -CF -g wsrc mymake /usr/xenocara/app/xenodm/mymake
-
-mymake:
-	cd /usr/xenocara/app/xenodm/ && mymake

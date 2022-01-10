@@ -152,11 +152,12 @@ make sure you have added yourself to the wsrc group with
 and then logged out and logged back in; and run 
 
     doas mkdir /usr/xenocara
-	chgrp wsrc /usr/xenocara
-	chmod 775 /usr/xenocara
+	doas chgrp wsrc /usr/xenocara
+	doas chmod 775 /usr/xenocara
 	cd /usr/xenocara
 	tar xzf ~/xenocara.tar.gz
 	cvs up
 
-Then `cd ~/.xenodm` and run `make patch` and `make mymake`. After
-updating the system you can simply run `make mymake`.
+Then `cd ~/.xenodm` and run `make patch` and then `cd
+/usr/xenocara/app/xenodm` and run `./mymake`. After running make patch
+once you can simply `cd /usr/xenocara/app/xenodm` and `./mymake`.
