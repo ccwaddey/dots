@@ -160,4 +160,4 @@ and then logged out and logged back in; and run
 
 Then `cd ~/.xenodm` and run `make patch` and then `cd
 /usr/xenocara/app/xenodm` and run `./mymake`. After running make patch
-once you can simply `cd /usr/xenocara/app/xenodm` and `./mymake`.
+once you can simply do `cd /usr/xenocara/app/xenodm` and `./mymake`.
