@@ -89,6 +89,17 @@ AddToFunc   StatusBarOff
 + I Style RightPanel StaysOnBottom
 + I Key M A CSM Function StatusBarOn
 
+DestroyFunc SwitchToEnglish
+AddToFunc SwitchToEnglish
++ I Exec exec xkbcomp -I$HOME/.xkb/ $HOME/.xkb/keymap/xkbtest $DISPLAY
++ I Key Slash A CSM Function SwitchToRussian
+
+DestroyFunc SwitchToRussian
+AddToFunc SwitchToRussian
++ I Key Slash A CSM Function SwitchToEnglish
++ I Exec exec setxkbmap -layout us -variant rus
+
+
 # Function: ChangeDesk
 #
 # This function is called by FvwmEvent every time the Desk is changed.
@@ -274,6 +285,7 @@ AddToMenu   MenuFvwmRoot "Fvwm" Title
 #+ "&Programs%icons/programs.png%" Popup MenuPrograms
 #+ "XDG &Menu%icons/apps.png%" Popup XDGMenu
 + "Terminal%$[FVWM_USERDIR]/xterm.png%" Exec exec env LC_CTYPE=en_US.UTF-8 xterm
++ "Anki%$[FVWM_USERDIR]/anki.png%" Exec exec anki
 + "&Firefox%$[FVWM_USERDIR]/firefox.png%" Exec exec firefox -offline
 + "&Tor-Browser%$[FVWM_USERDIR]/tor16.png%" Exec exec tor-browser
 + "&Emacs%$[FVWM_USERDIR]/emacs.png%" Exec exec emacs
@@ -290,6 +302,9 @@ AddToMenu   MenuFvwmRoot "Fvwm" Title
 #+ "Copy Config%icons/conf.png%" FvwmScript FvwmScript-ConfirmCopyConfig
 + "" Nop
 #+ "Re&fresh%icons/refresh.png%" Refresh
++ "English%icons/apps.png%" Exec exec xkbcomp -I$HOME/.xkb/ $HOME/.xkb/keymap/xkbtest $DISPLAY
++ "Russian%icons/apps.png%" Exec exec setxkbmap ru
++ "" Nop
 + "&Restart%icons/restart.png%" Restart
 + "Quit%icons/quit.png%" Quit
 
@@ -454,6 +469,7 @@ AddToMenu   MenuFvwmManPages "Help" Title
 #
 # Silent supresses any errors (such as keyboards with no Menu key).
 Silent Key Slash A CS Menu MenuFvwmRoot Root c c # noemacsconflict
+Silent Key Slash A CSM Function SwitchToRussian
 Silent Key M	 A CSM Function StatusBarOn # noemacsconflict
 Silent Key X	 A CSM Close
 #Silent Key Menu A A Menu MenuFvwmRoot
