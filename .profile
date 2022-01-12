@@ -6,6 +6,9 @@ PATH=$HOME/bin:/bin:/sbin:/usr/bin:/usr/sbin:/usr/X11R6/bin:/usr/local/bin:/usr/
 export PATH HOME TERM 
 umask 027
 
+# don't clobber with redirections, trackall, use physical dirs
+set -Ch -o physical 
+
 export PKG_PATH='ftp://ftp.usa.openbsd.org/%m'
 export CVSEDITOR="emacsclient -a mg"
 export CVSROOT='anoncvs@anoncvs1.usa.openbsd.org:/cvs'
