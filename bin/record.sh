@@ -34,6 +34,9 @@ then
 elif [ "shrink.sh" = `basename $0` ]
 then
     ffmpeg -i $1 -c:v libx264 -c:a copy ${1%.*}.mkv
+elif [ "trim.sh" = `basename $0` ]
+then
+    ffmpeg -t $1 -i $2 -c copy trim_$2
 fi
      
 xset -b
