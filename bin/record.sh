@@ -37,6 +37,9 @@ then
 elif [ "trim.sh" = `basename $0` ]
 then
     ffmpeg -t $1 -i $2 -c copy trim_$2
+elif [ "concat.sh" = `basename $0` ]
+then
+    ffmpeg -f concat -safe 0 -i $1 -c copy $2
 fi
      
 xset -b
