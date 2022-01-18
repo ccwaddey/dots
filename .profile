@@ -6,41 +6,12 @@ PATH=$HOME/bin:/bin:/sbin:/usr/bin:/usr/sbin:/usr/X11R6/bin:/usr/local/bin:/usr/
 export PATH HOME TERM 
 umask 027
 
-# don't clobber with redirections, trackall, use physical dirs
-set -Ch -o physical 
-
-export PKG_PATH='ftp://ftp.usa.openbsd.org/%m'
-export CVSEDITOR="emacsclient -a mg"
-export CVSROOT='anoncvs@anoncvs1.usa.openbsd.org:/cvs'
-export PAGER="less"
-export EDITOR="emacsclient -a mg"
-export VISUAL="emacsclient -a mg"
-SMTPD='/usr/src/usr.sbin/smtpd'
-
-. ~/.priv/.alias
-alias ls="ls -AF"
-alias u='sndioctl output.level=+.1'
-alias d='sndioctl output.level=-.1'
-alias mute='sndioctl output.level=0'
-alias g="git --no-pager"
-alias kls='ls | sort -t "-" -k2'
-alias mg='emacsclient -a mg'
-alias apr='apropos'
-alias ffprobe='ffprobe -hide_banner'
-alias ffmpeg='ffmpeg -hide_banner'
-alias dg='`which git` --git-dir=$HOME/.dots/ --work-tree=$HOME'
-
-bind '^w'=kill-region
-
-sp() {
-	echo $1 | spell
-}
+FROM_PROFILE=1 . ~/.eksh
 
 alias tmux='tmux -2'
 set -A complete_doas_1 $(\ls -1 $(echo $PATH | tr  ':' ' ' ) 2>/dev/null | sed '/:$/d')
 
 PS1="\[\033[32m\]\w \$?\\$ \[\033[0m\]"
-export MANPAGER=/usr/bin/less
 
 function man_complete {
   set -A complete_man $(\ls -1 /usr/share/man/man? /usr/X11R6/man/man? /usr/local/man/man[1-9] | sed -e '/^$/d' | sed '/:$/d' | sed '/[^.].$/d' | sed 's/.[0-9]$//')
