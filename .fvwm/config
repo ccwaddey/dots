@@ -221,6 +221,7 @@ Style Xterm !Title, Borders, StartsOnPage 0 0
 Style Emacs !Title, Borders, Handles, StartsOnPage 0 0
 Style Firefox !Title, !Borders, StartsOnPage 0 1, SkipMapping
 Style "Tor Browser" StartsOnPage 0 1, SkipMapping, !Title
+Style Shotcut StartsOnPage 1 0, SkipMapping
 Style FvwmPager Sticky, StaysOnBottom
 # Style Zathura !Title, !Borders, StartsOnPage 1 0, SkipMapping
 Style Kicad StartsOnPage 1 1, SkipMapping
@@ -286,6 +287,7 @@ AddToMenu   MenuFvwmRoot "Fvwm" Title
 #+ "XDG &Menu%icons/apps.png%" Popup XDGMenu
 + "Terminal%$[FVWM_USERDIR]/xterm.png%" Exec exec env LC_CTYPE=en_US.UTF-8 xterm
 + "Anki%$[FVWM_USERDIR]/anki.png%" Exec exec anki
++ "&Shotcut%$[FVWM_USERDIR]/shotcut.png%" Exec exec shotcut --fullscreen
 + "&Firefox%$[FVWM_USERDIR]/firefox.png%" Exec exec firefox -offline
 + "&Tor-Browser%$[FVWM_USERDIR]/tor16.png%" Exec exec tor-browser
 + "&Emacs%$[FVWM_USERDIR]/emacs.png%" Exec exec emacs
