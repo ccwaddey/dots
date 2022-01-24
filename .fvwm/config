@@ -223,6 +223,7 @@ Style Firefox !Title, !Borders, StartsOnPage 0 1, SkipMapping
 Style "Tor Browser" StartsOnPage 0 1, SkipMapping, !Title
 Style Shotcut StartsOnPage 1 0, SkipMapping
 Style FvwmPager Sticky, StaysOnBottom
+Style /dev/video0 !Title, !Borders, Sticky, StaysOnTop
 # Style Zathura !Title, !Borders, StartsOnPage 1 0, SkipMapping
 Style Kicad StartsOnPage 1 1, SkipMapping
 
@@ -342,7 +343,7 @@ AddToMenu   BGMenu "Wallpapers" Title
 DestroyMenu MenuWindowOps
 AddToMenu   MenuWindowOps
 + "Send To"   Popup MenuSendTo
-+ "Move"      Move
++ "&Move"      Move
 + "Resize"    Resize
 + "Iconify"   Iconify
 + "Maximize"  Maximize
@@ -474,6 +475,8 @@ Silent Key Slash A CS Menu MenuFvwmRoot Root c c # noemacsconflict
 Silent Key Slash A CSM Function SwitchToRussian
 Silent Key M	 A CSM Function StatusBarOn # noemacsconflict
 Silent Key X	 A CSM Close
+Silent Key W	 A CSM Move
+Silent Key Q	 A CSM Resize
 #Silent Key Menu A A Menu MenuFvwmRoot
 # noemacsconflict
 Silent Key Tab A M WindowList Root c c NoDeskSort, CurrentAtEnd, \

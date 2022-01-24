@@ -1,4 +1,4 @@
-
+;; (set-face-attribute 'default nil :height 350) ;; for recording
 ;; https://poolp.org/posts/2019-09-14/setting-up-a-mail-server-with-opensmtpd-dovecot-and-rspamd/
 ;; https://blog.cavelab.dev/2021/03/unbound-local-dns/
 (server-start)
