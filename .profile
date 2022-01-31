@@ -9,6 +9,7 @@ umask 027
 FROM_PROFILE=1 . ~/.eksh
 
 alias tmux='tmux -2'
+alias smallvid='ffplay -f v4l2 -input_format mjpeg -video_size 320x240 -i /dev/video0'
 set -A complete_doas_1 $(\ls -1 $(echo $PATH | tr  ':' ' ' ) 2>/dev/null | sed '/:$/d')
 
 PS1="\[\033[32m\]\w \$?\\$ \[\033[0m\]"
