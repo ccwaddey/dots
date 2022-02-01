@@ -248,7 +248,7 @@
  '(inhibit-startup-screen t)
  '(initial-buffer-choice nil)
  '(initial-scratch-message
-   "(set-face-attribute \\='default nil :height 350) ;; for recording")
+   "(set-face-attribute \\='default nil :height 350)")
  '(menu-bar-mode nil)
  '(org-catch-invisible-edits 'show-and-error)
  '(package-selected-packages
