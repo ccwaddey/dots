@@ -86,22 +86,22 @@ replace key <AC05> {
 // H //
 replace key <AC06> { 
 	type="EIGHT_LEVEL",
-	symbols[Group1] = [ h, H, asciicircum, Left, KP_Add ]
+	symbols[Group1] = [ h, H, asciicircum, Left, KP_Add, KP_Add, Left ]
 	};
 // J //
 replace key <AC07> { 
 	type="EIGHT_LEVEL",
-	symbols[Group1] = [ j, J, ampersand, Down, KP_4 ]
+	symbols[Group1] = [ j, J, ampersand, Down, KP_4, KP_4, Down ]
 	};
 // K // 	
 replace key <AC08> {
 	type="EIGHT_LEVEL",
-	symbols[Group1] = [ k, K, asterisk, Up, KP_5 ]
+	symbols[Group1] = [ k, K, asterisk, Up, KP_5, KP_5, Up ]
 	};
 // L //
 replace key <AC09> {
 	type="EIGHT_LEVEL",
-	symbols[Group1] = [ l, L, parenleft, Right, KP_6 ]
+	symbols[Group1] = [ l, L, parenleft, Right, KP_6, KP_6, Right ]
 	};
 // ; //	
 replace key <AC10> {
@@ -127,22 +127,22 @@ replace key <RTRN> {
 // Z //
 replace key <AB01> {
 	type="EIGHT_LEVEL",
-	symbols[Group1] = [ z, Z, z, Z, 6 ]
+	symbols[Group1] = [ z, Z, Left, Z, 6 ]
 	};
 // X //
 replace key <AB02> {
 	type="EIGHT_LEVEL",
-	symbols[Group1] = [ x, X, x, X, 7 ]  // Prior == PageUp
+	symbols[Group1] = [ x, X, Down, X, 7 ]  // Prior == PageUp
 	};
 // C //
 replace key <AB03> {
 	type="EIGHT_LEVEL",
-	symbols[Group1] = [ c, C, c, C, 8 ]
+	symbols[Group1] = [ c, C, Up, C, 8 ]
 	};
 // V //
 replace key <AB04> {
 	type="EIGHT_LEVEL",
-	symbols[Group1] = [ v, V, v, V, 9 ]
+	symbols[Group1] = [ v, V, Right, V, 9 ]
 	};
 // B //
 replace key <AB05> {
