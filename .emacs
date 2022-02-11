@@ -1,6 +1,5 @@
 ;; https://poolp.org/posts/2019-09-14/setting-up-a-mail-server-with-opensmtpd-dovecot-and-rspamd/
 ;; https://blog.cavelab.dev/2021/03/unbound-local-dns/
-(server-start)
 (toggle-frame-fullscreen)
 (iconify-frame)
 ;; (desktop-read "~/.emacs.d/")
@@ -231,7 +230,6 @@
    [default default default italic underline success warning error])
  '(ansi-color-names-vector
    ["#212526" "#ff4b4b" "#b4fa70" "#fce94f" "#729fcf" "#e090d7" "#8cc4ff" "#eeeeec"])
- '(auth-source-save-behavior nil)
  '(backup-directory-alist '(("." . "/home/me/.emacs.d/backups")))
  '(c-offsets-alist
    '((statement-cont . +)
@@ -247,8 +245,7 @@
  '(global-display-line-numbers-mode t)
  '(inhibit-startup-screen t)
  '(initial-buffer-choice nil)
- '(initial-scratch-message
-   "(set-face-attribute \\='default nil :height 350)")
+ '(initial-scratch-message "(set-face-attribute \\='default nil :height 350)")
  '(menu-bar-mode nil)
  '(org-catch-invisible-edits 'show-and-error)
  '(package-selected-packages
@@ -284,6 +281,8 @@
 (require 'ido)
 (ido-mode t)
 
+(load "~/.priv/.emacs")
+
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
 (package-initialize)
@@ -304,8 +303,4 @@
 (define-key mc-map (kbd "m") 'mc/mark-next-like-this)
 (define-key mc-map (kbd "p") 'mc/mark-previous-like-this)
 
-(load "~/.priv/.emacs")
-
-(split-window-right)
-(other-window 1)
-(shell)
+(server-start)
