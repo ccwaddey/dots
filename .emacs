@@ -2,52 +2,41 @@
 ;; https://blog.cavelab.dev/2021/03/unbound-local-dns/
 (toggle-frame-fullscreen)
 (iconify-frame)
-;; (desktop-read "~/.emacs.d/")
 
 (setq display-time-default-load-average nil)
 (setq display-time-day-and-date nil)
 (setq confirm-kill-emacs 'yes-or-no-p)
 (display-time)
-;;(semantic-mode)
 
-;;(autoload 'wl "wl" "wanderlust" t)
-
-(defun ccw-exit ()
+(defun ccw-exit () ;; I don't use this anymore
   "Exit function that calls desktop-save first."
   (interactive)
   (desktop-save "~/.emacs.d/")
   (save-buffers-kill-terminal))
-(global-set-key (kbd "C-x C-c") 'ccw-exit)
 
 (defun latex-frac (numer denom)
   "Makes a \\frac{}{} command by prompting the user."
   (interactive "sEnter numerator: \nsEnter denominator: ")
-  (setq oldsize (buffer-size))
-  (save-excursion
-    (insert "\\frac{" numer "}{" denom "}")
-    )
-  (forward-char (- (buffer-size) oldsize))
-  )
+  (let ((oldsize (buffer-size)))
+    (save-excursion
+      (insert "\\frac{" numer "}{" denom "}"))
+    (forward-char (- (buffer-size) oldsize))))
 
 (defun latex-sum (low-bound up-bound)
   "Makes a \\sum_{}^{} command by prompting the user."
   (interactive "sEnter lower bound: \nsEnter upper bound: ")
-  (setq oldsize (buffer-size))
-  (save-excursion
-    (insert "\\sum_{" low-bound "}^{" up-bound "}")
-    )
-  (forward-char (- (buffer-size) oldsize))
-  )
+  (let ((oldsize (buffer-size)))
+    (save-excursion
+      (insert "\\sum_{" low-bound "}^{" up-bound "}"))
+    (forward-char (- (buffer-size) oldsize))))
 
 (defun latex-integral (low-bound up-bound)
   "Makes an \\int_{}^{} command by prompting the user."
   (interactive "sEnter lower bound: \nsEnter upper bound: ")
-  (setq oldsize (buffer-size))
-  (save-excursion
-    (insert "\\int_{" low-bound "}^{" up-bound "}")
-    )
-  (forward-char (- (buffer-size) oldsize))
-  )
+  (let ((oldsize (buffer-size)))
+    (save-excursion
+      (insert "\\int_{" low-bound "}^{" up-bound "}"))
+    (forward-char (- (buffer-size) oldsize))))
 
 (defun latex-lr (container)
   "Inserts \\lcontainer \\rcontainer into the text."
@@ -143,6 +132,17 @@
   (indent-for-tab-command))
 (define-key ccw-key-map "j" 'begin-function-braces)
 
+(defun swap-windows ()
+  "Swaps the other window's buffer with the current window's."
+  (interactive)
+  (save-excursion
+    (let ((curbuf (current-buffer)))
+      (other-window 1)
+      (let ((otherbuf (current-buffer)))
+	(switch-to-buffer curbuf)
+	(other-window 1)
+	(switch-to-buffer otherbuf)
+	(other-window 1)))))
 
 
 (add-hook 'apropos-mode-hook
@@ -212,13 +212,15 @@
 	    (define-key shell-mode-map (kbd "C-n") 'comint-next-input)
 	    (define-key shell-mode-map (kbd "M-n") 'next-line)))
 
+(setq persp-state-default-file "~/.emacs.d/perspectives")
+(setq persp-sort 'access)
+(setq persp-modestring-short t)
+(add-hook 'kill-emacs-hook #'persp-state-save)
+
 (put 'narrow-to-region 'disabled nil)
 (put 'narrow-to-page 'disabled nil)
 (setq url-cookie-confirmation 't)
-(rcirc-track-minor-mode 1)
 (setq select-enable-clipboard 't) ;; default
-;;(setq select-enable-primary 't)
-;;(setq mouse-drag-copy-region 't)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -238,7 +240,6 @@
      (arglist-cont-nonempty c-lineup-gcc-asm-reg c-lineup-arglist)))
  '(column-number-mode t)
  '(custom-enabled-themes '(tango-dark))
- '(desktop-files-not-to-save nil)
  '(dired-use-ls-dired nil)
  '(display-line-numbers-type nil)
  '(fringe-mode 0 nil (fringe))
@@ -249,7 +250,7 @@
  '(menu-bar-mode nil)
  '(org-catch-invisible-edits 'show-and-error)
  '(package-selected-packages
-   '(markdown-mode pdf-tools gh-md rust-mode multiple-cursors smex))
+   '(perspective markdown-mode pdf-tools gh-md rust-mode multiple-cursors smex))
  '(pdf-view-continuous t)
  '(rcirc-authinfo nil)
  '(rcirc-server-alist '(("chat.freenode.net" :channels ("#openbsd"))))
@@ -258,6 +259,7 @@
  '(safe-local-variable-values '((eval set-fill-column 80)))
  '(save-place-mode t)
  '(scroll-bar-mode nil)
+ '(semantic-complete-inline-analyzer-displayer-class 'semantic-displayer-ghost)
  '(show-paren-mode t)
  '(tool-bar-mode nil)
  '(tooltip-mode nil))
@@ -291,7 +293,6 @@
 
 (require 'smex)
 (smex-initialize)
-(global-set-key (kbd "M-x") 'smex)
 (global-set-key (kbd "M-X") 'smex-major-mode-commands)
 ;; This is your old M-x.
 (global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
@@ -302,5 +303,8 @@
 (define-key mc-map (kbd "e") 'mc/edit-lines)
 (define-key mc-map (kbd "m") 'mc/mark-next-like-this)
 (define-key mc-map (kbd "p") 'mc/mark-previous-like-this)
+
+(persp-state-load "~/.emacs.d/perspectives")
+(global-set-key (kbd "C-x C-b") 'persp-ibuffer)
 
 (server-start)
