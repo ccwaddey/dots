@@ -1,191 +1,25 @@
+;; Don't show emacs until we alt-tab to it but be full screen then.
 (toggle-frame-fullscreen)
 (iconify-frame)
 
+;; Load latex convenience functions
+(load "~/.elisp/latex")
+;; Load keybinding convenience functions (and their mappings)
+(load "~/.elisp/convenience")
+;; Load hooks for various modes (mostly j/k scroll up/down)
+(load "~/.elisp/hooks")
+;; Load private stuff
+(load "~/.priv/.emacs")
+
+;; Display time
 (setq display-time-default-load-average nil)
 (setq display-time-day-and-date nil)
-(setq confirm-kill-emacs 'yes-or-no-p)
 (display-time)
 
-(defun ccw-exit () ;; I don't use this anymore
-  "Exit function that calls desktop-save first."
-  (interactive)
-  (desktop-save "~/.emacs.d/")
-  (save-buffers-kill-terminal))
+;; Don't accidentally kill emacs
+(setq confirm-kill-emacs 'yes-or-no-p)
 
-(defun latex-frac (numer denom)
-  "Makes a \\frac{}{} command by prompting the user."
-  (interactive "sEnter numerator: \nsEnter denominator: ")
-  (let ((oldsize (buffer-size)))
-    (save-excursion
-      (insert "\\frac{" numer "}{" denom "}"))
-    (forward-char (- (buffer-size) oldsize))))
-
-(defun latex-sum (low-bound up-bound)
-  "Makes a \\sum_{}^{} command by prompting the user."
-  (interactive "sEnter lower bound: \nsEnter upper bound: ")
-  (let ((oldsize (buffer-size)))
-    (save-excursion
-      (insert "\\sum_{" low-bound "}^{" up-bound "}"))
-    (forward-char (- (buffer-size) oldsize))))
-
-(defun latex-integral (low-bound up-bound)
-  "Makes an \\int_{}^{} command by prompting the user."
-  (interactive "sEnter lower bound: \nsEnter upper bound: ")
-  (let ((oldsize (buffer-size)))
-    (save-excursion
-      (insert "\\int_{" low-bound "}^{" up-bound "}"))
-    (forward-char (- (buffer-size) oldsize))))
-
-(defun latex-lr (container)
-  "Inserts \\lcontainer \\rcontainer into the text."
-  (interactive "sEnter container: ")
-  (save-excursion
-    (insert "\\l" container "   \\r" container))
-  (forward-word)
-  (forward-char))
-
-(defun latex-begin-end (env)
-  "Creates beginning and end of environment."
-  (interactive "sEnter environment: ")
-  (save-excursion
-    (insert "\\begin{" env "}")
-    (newline)
-    (insert "\\end{" env "}")
-    (indent-for-tab-command))
-  (move-end-of-line nil))
-
-(define-prefix-command 'ccw-key-map)
-(global-set-key (kbd "C-c k") 'ccw-key-map)
-
-(defun insert-pointer ()
-  "Inserts a '->' into the buffer for my poor little pinky."
-  (interactive)
-  (insert "->"))
-(define-key ccw-key-map "a" 'insert-pointer)
-
-(defun insert-equals-pointer ()
-  "Inserts a '=>' into the buffer for my poor little pinky."
-  (interactive)
-  (insert "=>"))
-(define-key ccw-key-map "e" 'insert-equals-pointer)
-
-(defun insert-parens ()
-  "Inserts a matching pair of parentheses and puts the cursor between them."
-  (interactive)
-  (insert "()")
-  (backward-char))
-(define-key ccw-key-map "p" 'insert-parens)
-
-(defun insert-braces ()
-  "Inserts a matching pair of braces and puts the cursor between them."
-  (interactive)
-  (insert "{}")
-  (backward-char))
-(define-key ccw-key-map "f" 'insert-braces)
-
-(defun insert-brackets ()
-  "Inserts a matching pair of brackets and puts the cursor between them."
-  (interactive)
-  (insert "[]")
-  (backward-char))
-(define-key ccw-key-map "b" 'insert-brackets)
-
-(defun insert-angle-brackets ()
-  "Inserts a matching pair of angle-brackets and puts the cursor between them."
-  (interactive)
-  (insert "<>")
-  (backward-char))
-(define-key ccw-key-map "k" 'insert-angle-brackets)
-
-(defun insert-quotes ()
-  "Inserts a matching pair of `\"' and puts the cursor between them."
-  (interactive)
-  (insert "\"\"")
-  (backward-char))
-(define-key ccw-key-map "d" 'insert-quotes)
-
-(defun insert-single-quotes ()
-  "Inserts a matching pair of `'' and puts the cursor between them."
-  (interactive)
-  (insert "''")
-  (backward-char))
-(define-key ccw-key-map "s" 'insert-single-quotes)
-
-(defun insert-string-function ()
-  "Inserts a (\"\") for functions that take string arguments."
-  (interactive)
-  (insert-parens)
-  (insert-quotes))
-(define-key ccw-key-map "l" 'insert-string-function)
-
-(defun begin-function-braces ()
-  "Inserts a brace pair with indenting to begin a function."
-  (interactive)
-  (insert-braces)
-  (newline)
-  (indent-for-tab-command)
-  (previous-line)
-  (move-end-of-line nil)
-  (newline)
-  (indent-for-tab-command))
-(define-key ccw-key-map "j" 'begin-function-braces)
-
-(defun swap-windows ()
-  "Swaps the other window's buffer with the current window's."
-  (interactive)
-  (save-excursion
-    (let ((curbuf (current-buffer)))
-      (other-window 1)
-      (let ((otherbuf (current-buffer)))
-	(switch-to-buffer curbuf)
-	(other-window 1)
-	(switch-to-buffer otherbuf)
-	(other-window 1)))))
-
-
-(add-hook 'apropos-mode-hook
-	  (lambda ()
-	    (define-key apropos-mode-map "j" 'scroll-up-line)
-	    (define-key apropos-mode-map "k" 'scroll-down-line)))
-
-(add-hook 'Info-mode-hook
-	  (lambda ()
-	    (define-key Info-mode-map "j" 'scroll-up-line)
-	    (define-key Info-mode-map "k" 'scroll-down-line)))
-
-(add-hook 'help-mode-hook
-	  (lambda ()
-	    (define-key help-mode-map "j" 'scroll-up-line)
-	    (define-key help-mode-map "k" 'scroll-down-line)))
-
-(add-hook 'Man-mode-hook
-	  (lambda ()
-	    (define-key Man-mode-map "j" 'scroll-up-line)
-	    (define-key Man-mode-map "k" 'scroll-down-line)))
-
-(add-hook 'pdf-view-mode-hook
-	  (lambda ()
-	    (define-key pdf-view-mode-map "j" 'pdf-view-next-line-or-next-page)
-	    (define-key pdf-view-mode-map "k"
-	      'pdf-view-previous-line-or-previous-page)
-	    (define-key pdf-view-mode-map "h" 'image-backward-hscroll)
-	    (define-key pdf-view-mode-map "l" 'image-forward-hscroll)
-	    (pdf-view-themed-minor-mode 1)))
-
-(add-hook 'eww-mode-hook
-	  (lambda ()
-	    (define-key eww-mode-map "j" 'scroll-up-line)
-	    (define-key eww-mode-map "k" 'scroll-down-line)))
-
-(add-hook 'c-mode-hook
-	  (lambda ()
-	    (hs-minor-mode)
-	    (define-key c-mode-map (kbd "C-c p") 'insert-pointer)))
-
-(add-hook 'rust-mode-hook
-	  (lambda ()
-	    (define-key rust-mode-map (kbd "C-c p") 'insert-pointer)))
-
+;; Should I move this to convenience?
 (define-key global-map (kbd "C-c r") 'vc-refresh-state)
 (define-key global-map (kbd "C-c c") 'compile)
 
@@ -193,32 +27,15 @@
       '((other . "bsd")))
 
 (setq view-read-only t)
-(add-hook 'view-mode-hook
-	  (lambda ()
-	    (define-key view-mode-map "j" 'scroll-up-line)
-	    (define-key view-mode-map "k" 'scroll-down-line)
-	    (define-key view-mode-map (kbd "C-p") 'previous-line)
-	    (define-key view-mode-map (kbd "C-n") 'next-line)))
 
-(add-hook 'shell-mode-hook
-	  (lambda ()
-	    (setq comint-process-echoes t)
-	    (setq comint-scroll-show-maximum-output nil)
-	    (define-key shell-mode-map (kbd "C-c q") 'view-mode)
-	    (define-key shell-mode-map (kbd "C-p") 'comint-previous-input)
-	    (define-key shell-mode-map (kbd "M-p") 'previous-line)
-	    (define-key shell-mode-map (kbd "C-n") 'comint-next-input)
-	    (define-key shell-mode-map (kbd "M-n") 'next-line)))
+(setq url-cookie-confirmation 't)
 
-(setq persp-state-default-file "~/.emacs.d/perspectives")
-(setq persp-sort 'access)
-(setq persp-modestring-short t)
-(add-hook 'kill-emacs-hook #'persp-state-save)
+(setq select-enable-clipboard 't) ;; default
 
 (put 'narrow-to-region 'disabled nil)
 (put 'narrow-to-page 'disabled nil)
-(setq url-cookie-confirmation 't)
-(setq select-enable-clipboard 't) ;; default
+(put 'upcase-region 'disabled nil)
+(put 'downcase-region 'disabled nil)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -239,6 +56,9 @@
  '(column-number-mode t)
  '(custom-enabled-themes '(tango-dark))
  '(dired-use-ls-dired nil)
+ '(display-buffer-base-action
+   '((display-buffer-reuse-window display-buffer-same-window)
+     (reusable-frames . t)))
  '(display-line-numbers-type nil)
  '(fringe-mode 0 nil (fringe))
  '(global-display-line-numbers-mode t)
@@ -275,13 +95,10 @@
  '(term-color-white ((t (:background "#eeeeec" :foreground "#eeeeec"))))
  '(term-color-yellow ((t (:background "#fce94f" :foreground "#fce94f")))))
 
-(put 'upcase-region 'disabled nil)
-(put 'downcase-region 'disabled nil)
+;; Package Configuration
 
 (require 'ido)
 (ido-mode t)
-
-(load "~/.priv/.emacs")
 
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
@@ -303,6 +120,10 @@
 (define-key mc-map (kbd "m") 'mc/mark-next-like-this)
 (define-key mc-map (kbd "p") 'mc/mark-previous-like-this)
 
+(setq persp-state-default-file "~/.emacs.d/perspectives")
+(setq persp-sort 'access)
+(setq persp-modestring-short t)
+(add-hook 'kill-emacs-hook #'persp-state-save)
 (persp-state-load "~/.emacs.d/perspectives")
 (global-set-key (kbd "C-x C-b") 'persp-ibuffer)
 
