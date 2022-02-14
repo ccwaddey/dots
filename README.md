@@ -56,19 +56,24 @@ mirrors. You'll also want to create a `.priv` directory and add a
 
 ### .emacs
 
-The first time you open up emacs, `pdf-tools` will try to install. This
-wasn't too hard for me to figure out, but your mileage may
-vary. Installing all the packages listed at the beginning of this
-README will help. You'll then have to restart emacs to use `pdf-tools`.
+The first time you open up emacs, `pdf-tools` will try to install (and
+you might get some errors loading .emacs). Fixing all this wasn't too
+hard for me to figure out, but your mileage may vary. Installing all
+the packages listed at the beginning of this README will help, as will
+installing the emacs packages listed in the next paragraph. You'll
+have to restart emacs a couple of times to get everything working
+right.
 
 The emacs packages that I have installed currently are `gh-md`,
-`markdown-mode`, `multiple-cursors`, `pdf-tools`, `rust-mode`, and
-`smex`. I believe these will be pulled in by the file.
+`markdown-mode`, `multiple-cursors`, `pdf-tools`, `perspective`,
+`rust-mode`, and `smex`. Run `M-x list-packages` and click on each
+one, then click install.
 
 Depending on the resolution of your display, you'll have to adjust the
 `:height 200` part of custom-set-faces.
 
-Add a `.emacs.el` file to your `.priv` directory.
+Add a `.emacs.el` file to your `.priv` directory. Add a file
+`perspectives` to your `~/.emacs.d` directory.
 
 ### .fvwm/FvwmScript-mydatetime
 
@@ -127,7 +132,7 @@ This requires urlview.sh in bin. You should also run
 ### .xkb/*
 
 You don't need to worry about anything in here unless you're changing
-you're keyboard layout. Just comment out one line in .fvwm.
+your keyboard layout. Just comment out one line in .fvwm.
 
 ### bin/*
 
@@ -139,6 +144,9 @@ You don't need to do this unless you want to see what password hashes
 look like.
 
 ### .xenodm/*
+
+This section may be incomplete/incorrect. All others should be good as
+of Feb 14, 2022.
 
 If you just want .xenodm to kinda look like fvwm when you log in, just
 cd into this directory and run `make && doas make install`.
