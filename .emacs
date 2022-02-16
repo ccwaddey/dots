@@ -47,7 +47,7 @@
    [default default default italic underline success warning error])
  '(ansi-color-names-vector
    ["#212526" "#ff4b4b" "#b4fa70" "#fce94f" "#729fcf" "#e090d7" "#8cc4ff" "#eeeeec"])
- '(backup-directory-alist '(("." . "/home/me/.emacs.d/backups")))
+ '(backup-directory-alist '(("." . "~/.emacs.d/backups")))
  '(c-offsets-alist
    '((statement-cont . +)
      (arglist-intro . +)
@@ -56,12 +56,8 @@
  '(column-number-mode t)
  '(custom-enabled-themes '(tango-dark))
  '(dired-use-ls-dired nil)
- '(display-buffer-base-action
-   '((display-buffer-reuse-window display-buffer-same-window)
-     (reusable-frames . t)))
- '(display-line-numbers-type nil)
+ '(display-buffer-base-action '((display-buffer-reuse-window display-buffer-same-window)))
  '(fringe-mode 0 nil (fringe))
- '(global-display-line-numbers-mode t)
  '(inhibit-startup-screen t)
  '(initial-buffer-choice nil)
  '(initial-scratch-message "(set-face-attribute \\='default nil :height 350)")
@@ -70,9 +66,6 @@
  '(package-selected-packages
    '(perspective markdown-mode pdf-tools gh-md rust-mode multiple-cursors smex))
  '(pdf-view-continuous t)
- '(rcirc-authinfo nil)
- '(rcirc-server-alist '(("chat.freenode.net" :channels ("#openbsd"))))
- '(rcirc-track-minor-mode t)
  '(revert-without-query '("resume\\.pdf"))
  '(safe-local-variable-values '((eval set-fill-column 80)))
  '(save-place-mode t)

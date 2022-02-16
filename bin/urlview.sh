@@ -5,4 +5,4 @@ then
     mkdir $HOME/.linksurlview
 fi
 
-echo "$1" > /home/me/.linksurlview/$(date "+%m_%e-%H:%M:%S")
+echo "$1" > ~/.linksurlview/$(date "+%m_%e-%H:%M:%S")
