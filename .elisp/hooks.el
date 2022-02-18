@@ -1,3 +1,6 @@
+(add-hook 'emacs-lisp-mode-hook
+	  (lambda ()
+	    (view-mode)))
 
 (add-hook 'apropos-mode-hook
 	  (lambda ()
@@ -35,7 +38,7 @@
 
 (add-hook 'c-mode-hook
 	  (lambda ()
-	    (hs-minor-mode)
+	    (view-mode)
 	    (define-key c-mode-map (kbd "C-c p") 'insert-pointer)))
 
 (add-hook 'rust-mode-hook

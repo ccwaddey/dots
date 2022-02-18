@@ -87,3 +87,11 @@
 	(switch-to-buffer otherbuf)
 	(other-window 1)))))
 
+(setq ccw-font-is-big nil)
+(defun make-font-big ()
+  "Toggles the font size between 200 and 350 for recording purposes."
+  (interactive)
+  (if ccw-font-is-big
+      (set-face-attribute 'default nil :height 200)
+    (set-face-attribute 'default nil :height 350))
+  (setq ccw-font-is-big (not ccw-font-is-big)))
