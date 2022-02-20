@@ -66,6 +66,7 @@
  '(package-selected-packages
    '(perspective markdown-mode pdf-tools gh-md rust-mode multiple-cursors smex))
  '(pdf-view-continuous t)
+ '(pdf-view-resize-factor 1.1)
  '(revert-without-query '("resume\\.pdf"))
  '(safe-local-variable-values '((eval set-fill-column 80)))
  '(save-place-mode t)

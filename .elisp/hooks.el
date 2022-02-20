@@ -28,8 +28,11 @@
 	    (define-key pdf-view-mode-map "k"
 	      'pdf-view-previous-line-or-previous-page)
 	    (define-key pdf-view-mode-map "h" 'image-backward-hscroll)
-	    (define-key pdf-view-mode-map "l" 'image-forward-hscroll)
 	    (pdf-view-themed-minor-mode 1)))
+
+(add-hook 'pdf-history-minor-mode-hook
+	  (lambda ()
+	    (define-key pdf-history-minor-mode-map "l" 'image-forward-hscroll)))
 
 (add-hook 'eww-mode-hook
 	  (lambda ()
