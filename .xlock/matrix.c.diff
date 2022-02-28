@@ -1,0 +1,21 @@
+Index: matrix.c
+===================================================================
+RCS file: /cvs/xenocara/app/xlockmore/modes/matrix.c,v
+retrieving revision 1.1.1.1
+diff -u -p -r1.1.1.1 matrix.c
+--- matrix.c	26 Nov 2006 11:08:33 -0000	1.1.1.1
++++ matrix.c	28 Feb 2022 19:04:31 -0000
+@@ -434,11 +434,11 @@ static void new_column(const ModeInfo *m
+ 
+ 		  if (c->endChar) {
+ 			  src = mp->kana[1]; /* a bold, non-numeric character */
+-			  kOffset = MATRIX_RANDOM(10, katakana_num_cells);
++			  kOffset = MATRIX_RANDOM(0, 2);
+ 			  c->endChar = False;
+ 			} else {             /* inside a string - kana or number */
+ 			  src = mp->kana[0];
+-			  kOffset = MATRIX_RANDOM(0, katakana_num_cells);
++			  kOffset = MATRIX_RANDOM(0, 2);
+ 			}
+ 
+ 		  XCopyArea(MI_DISPLAY(mi), (Drawable) src,

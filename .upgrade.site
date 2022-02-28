@@ -1,0 +1,10 @@
+#!/bin/sh
+MAKEUSER=me
+
+cd /usr/xenocara/app/xenodm &&
+    su $MAKEUSER -c 'make -f Makefile.bsd-wrapper' # Don't make as root
+make -f Makefile.bsd-wrapper install
+
+cd /usr/xenocara/app/xlockmore &&
+    su $MAKEUSER -c 'make -f Makefile.bsd-wrapper' # Don't make as root
+make -f Makefile.bsd-wrapper install

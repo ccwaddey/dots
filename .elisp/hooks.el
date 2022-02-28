@@ -34,6 +34,11 @@
 	  (lambda ()
 	    (define-key pdf-history-minor-mode-map "l" 'image-forward-hscroll)))
 
+(add-hook 'pdf-outline-buffer-mode-hook
+	  (lambda ()
+	    (define-key pdf-outline-buffer-mode-map (kbd "RET")
+	      'pdf-outline-follow-link-and-quit)))
+
 (add-hook 'eww-mode-hook
 	  (lambda ()
 	    (define-key eww-mode-map "j" 'scroll-up-line)

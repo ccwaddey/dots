@@ -123,6 +123,15 @@ Basically the same advice as for .eksh. Add a `.alias` file to your
 
 You need to have xclip installed to get copy/paste working right.
 
+### .upgrade.site
+
+If you plan on upgrading frequently by downloading snapshots, then you
+might want to install put .upgrade.site in the root directory as
+`/upgrade.site`. I use this to automatically compile and install a
+couple of programs in X that I've tweaked. You'll want it to `chown
+root:wheel /upgrade.site` as root and `chmod 740 /upgrade.site` as
+well. See the diffs in .xenodm and .xlock to see what's going on.
+
 ### .urlview
 
 This requires urlview.sh in bin. You should also run 
@@ -145,15 +154,18 @@ look like.
 
 ### .xenodm/*
 
-This section may be incomplete/incorrect. All others should be good as
-of Feb 14, 2022.
-
 If you just want .xenodm to kinda look like fvwm when you log in, just
 cd into this directory and run `make && doas make install`.
 
-If you want the fancy underline cursor instead of the default, then
-download xenocara.tar.gz (to your home directory in this example);
-make sure you have added yourself to the wsrc group with
+By default, the cursor for the login prompt is a vertical one. I've
+modified the source code to make the cursor (essentially) be an
+underline character.
+
+If you want the underline cursor instead of the default, then download
+xenocara.tar.gz (to your home directory in this example; this is the
+beginning of getting the xenocara source code for those coming here
+from the .xlock section); make sure you have added yourself to the
+wsrc group with
 
     doas user mod -G wsrc $(whoami)
 
@@ -166,6 +178,30 @@ and then logged out and logged back in; and run
 	tar xzf ~/xenocara.tar.gz
 	cvs up
 
-Then `cd ~/.xenodm` and run `make patch` and then `cd
-/usr/xenocara/app/xenodm` and run `./mymake`. After running make patch
-once you can simply do `cd /usr/xenocara/app/xenodm` and `./mymake`.
+(The last command isn't strictly necessary; this is also the end of
+getting the xenocara source code.) Then `cd ~/.xenodm` and run `make
+patch` and then `cd /usr/xenocara/app/xenodm` and run `./mymake`. This
+will make and install the new xenodm so that it uses the underline
+cursor. The old xenodm is still running, so you'll have to reboot (or
+restart xenodm) to see the new login prompt.
+
+If you're going to put .upgrade.site into the root directory as
+/upgrade.site, then this will be done automatically when you upgrade
+(useful if you're following current using snapshots).
+
+### .xlock
+
+This section is not necessary, but if you want the "matrix"-style
+screensaver that is shown after you resume from a suspend to only show
+0s and 1s (like it should) instead of all the Japanese (I think?)
+characters, then download the source code for xenocara as described in
+.xenodm and run
+
+	cd ~/.xlock
+	make patch
+	cd /usr/xenocara/app/xlockmore
+	make -f Makefile.bsd-wrapper
+	doas make -f Makefile.bsd-wrapper install
+	
+That should patch the code to just give you zeros and ones, compile it
+and install it.
