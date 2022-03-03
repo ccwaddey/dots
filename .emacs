@@ -22,6 +22,9 @@
 ;; Should I move this to convenience?
 (define-key global-map (kbd "C-c r") 'vc-refresh-state)
 (define-key global-map (kbd "C-c c") 'compile)
+;; (global-set-key (kbd "C-c l") 'org-store-link)
+;; (global-set-key (kbd "C-c a") 'org-agenda)
+;; (global-set-key (kbd "C-c c") 'org-capture)
 
 (setq c-default-style
       '((other . "bsd")))
@@ -63,6 +66,7 @@
  '(initial-scratch-message nil)
  '(menu-bar-mode nil)
  '(org-catch-invisible-edits 'show-and-error)
+ '(org-ctrl-k-protect-subtree t)
  '(package-selected-packages
    '(perspective markdown-mode pdf-tools gh-md rust-mode multiple-cursors smex))
  '(pdf-view-continuous t)
