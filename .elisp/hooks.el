@@ -1,6 +1,4 @@
-(add-hook 'emacs-lisp-mode-hook
-	  (lambda ()
-	    (view-mode)))
+;; -*- eval: (view-mode); -*-
 
 (add-hook 'apropos-mode-hook
 	  (lambda ()

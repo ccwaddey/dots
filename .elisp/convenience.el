@@ -1,4 +1,4 @@
-
+;; -*- eval: (view-mode); -*-
 (define-prefix-command 'ccw-key-map)
 (global-set-key (kbd "C-c k") 'ccw-key-map)
 
