@@ -68,6 +68,10 @@
 	    (define-key shell-mode-map (kbd "C-n") 'comint-next-input)
 	    (define-key shell-mode-map (kbd "M-n") 'next-line)))
 
+(add-hook 'org-mode-hook
+	  (lambda ()
+	    (auto-fill-mode 70)))
+
 (add-hook 'grep-mode-hook
 	  (lambda ()
 	    (define-key grep-mode-map "n" 'next-error)
