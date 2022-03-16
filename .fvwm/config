@@ -217,6 +217,13 @@ Style Kicad StartsOnPage 1 1, SkipMapping
 #      13 - FvwmPager Active Page
 #      14 - FvwmIconMan Iconified Button
 ###########
+# Colorset notes:
+# #eeeeec - whitish || #2e3436 - slate/bg || #555753 - lighter slate
+# #4d4d4d - another light slate || #676767 - another light slate
+# ones with the same on all are lightish slates
+# #ce5c00 - orange border || #d3d7cf - whitish
+# #006c6c - dark teal || #003c3c - darker teal
+# #73d216 - this comment color green
 Colorset 0  fg #eeeeec, bg #2e3436, hi, sh, Plain, NoShape
 Colorset 1  fg #eeeeec, bg #555753, hi, sh, Plain, NoShape
 Colorset 2  fg #eeeeec, bg #555753, hi, sh, Plain, NoShape
