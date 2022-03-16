@@ -1,10 +1,19 @@
-Index: matrix.c
+Index: modes/matrix.c
 ===================================================================
 RCS file: /cvs/xenocara/app/xlockmore/modes/matrix.c,v
 retrieving revision 1.1.1.1
 diff -u -p -r1.1.1.1 matrix.c
---- matrix.c	26 Nov 2006 11:08:33 -0000	1.1.1.1
-+++ matrix.c	28 Feb 2022 19:04:31 -0000
+--- modes/matrix.c	26 Nov 2006 11:08:33 -0000	1.1.1.1
++++ modes/matrix.c	16 Mar 2022 20:49:50 -0000
+@@ -357,7 +357,7 @@ static const unsigned char katakana_bits
+  * (Note: the distribution of speeds implemented in new_column()
+  *  is slightly biased against very slow scrolling.)
+  */
+-#define MATRIX_SPEED  MATRIX_RANDOM(1, 8)
++#define MATRIX_SPEED  MATRIX_RANDOM(1, 5)
+ 
+ /*
+  * Number of characters in each generated string
 @@ -434,11 +434,11 @@ static void new_column(const ModeInfo *m
  
  		  if (c->endChar) {

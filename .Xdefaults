@@ -41,6 +41,8 @@ XTerm*color16:#757773
 ! Tried this for copying to clipboard, unnecessary
 ! XTerm*disallowedWindowOps: 20,21,SetXprop
 XTerm*fullscreen:always
+grdc*fullscreen:never
+grdc*geometry:60x9-0+0
 XTerm*allowMouseOps:true
 ! Shift N makes smaller, Shift H makes bigger
 !		     Ctrl <Key> +:	insert() \n\
