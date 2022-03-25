@@ -21,16 +21,16 @@ xset b
 if [ "record.sh" = `basename $0` ]
 then
     sleep 3 && xkbbell && sleep 1 &&
-	ffmpeg -n -loglevel quiet -f sndio -i snd/1 -f x11grab -r 12 -i :0.0 \
+	ffmpeg -n -loglevel quiet -f sndio -i snd/2 -f x11grab -r 12 -i :0.0 \
 	       -vcodec ffv1 -acodec mp3 $1
 elif [ "yrecord.sh" = `basename $0` ]
 then
     sleep 3 && xkbbell && sleep 1 &&
-	ffmpeg -y -loglevel quiet -f sndio -i snd/1 -f x11grab -r 12 -i :0.0 \
+	ffmpeg -y -loglevel quiet -f sndio -i snd/2 -f x11grab -r 12 -i :0.0 \
 	       -vcodec ffv1 -acodec mp3 $1
 elif [ "arecord.sh" = `basename $0` ]
 then
-    xkbbell && sleep 1 && ffmpeg -n -f sndio -i snd/1 -acodec mp3 $1
+    xkbbell && sleep 1 && ffmpeg -n -f sndio -i snd/2 -acodec mp3 $1
 elif [ "shrink.sh" = `basename $0` ]
 then
     ffmpeg -i $1 -c:v libx264 -c:a copy ${1%.*}.mkv

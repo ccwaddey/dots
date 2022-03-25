@@ -1,14 +1,4 @@
 
-# InfoStoreAdd can be used to store variable data internal to fvwm.
-# The variable can then be used in the configuration as $[infostore.name].
-#
-# You can also use environment variables but for data internal to fvwm
-# use InfoStore variables instead.
-#
-# The following is used in various menus and also sets the terminal
-# that FvwmConsole uses. Change this to your terminal of choice
-InfoStoreAdd terminal xterm
-
 ###########
 # 1: Functions
 #
@@ -35,6 +25,7 @@ DestroyFunc StartFunction
 AddToFunc   StartFunction
 + I Exec exec xwallpaper --stretch $[FVWM_USERDIR]/foggc.png
 + I Module FvwmPager 0 3
++ I Module FvwmConsole -terminal xterm
 + I Exec exec xkbcomp -I$HOME/.xkb/ $HOME/.xkb/keymap/xkbtest $DISPLAY
 + I GotoPage 0 0
 
@@ -68,14 +59,19 @@ DestroyFunc StatusBarOn
 AddToFunc   StatusBarOn
 + I Style grdc StaysOnTop
 + I Style FvwmPager StaysOnTop
++ I Style FvwmConsole StaysOnTop
++ I Next (FvwmConsole) Focus
 + I Key M A CSM Function StatusBarOff
 
 DestroyFunc StatusBarOff
 AddToFunc   StatusBarOff
++ I Prev (*) Focus
 + I Style grdc StaysOnBottom
 + I Style FvwmPager StaysOnBottom
++ I Style FvwmConsole StaysOnBottom
 + I Key M A CSM Function StatusBarOn
 
+# Comment out the next two block if you don't need Russian stuff
 DestroyFunc SwitchToEnglish
 AddToFunc SwitchToEnglish
 + I Exec exec xkbcomp -I$HOME/.xkb/ $HOME/.xkb/keymap/xkbtest $DISPLAY
@@ -178,19 +174,23 @@ Style * !Icon
 
 # Window Specific Styles
 Style FvwmIdent WindowListSkip
-Style $[infostore.terminal] !Title, Borders, StartsOnPage 0 0
+Style FvwmConsole !Title, Borders, Sticky, StaysOnBottom, BorderColorset 4, \
+      HighlightBorderColorset 4, WindowListSkip
 Style RealXTerm MiniIcon $[FVWM_USERDIR]/xterm.png, !Title, \
-      !Borders, StartsOnPage 0 0 
+      !Borders, StartsOnPage 0 0
 Style Emacs !Title, Borders, Handles, StartsOnPage 0 0
-Style Firefox !Title, !Borders, StartsOnPage 0 1, SkipMapping
+Style firefox-default !Title, !Borders, StartsOnPage 0 1, SkipMapping
 Style "Tor Browser" StartsOnPage 0 1, SkipMapping, !Title
 Style Shotcut StartsOnPage 1 0, SkipMapping
+Style Audacity StartsOnPage 1 0, SkipMapping
 Style FvwmPager WindowListSkip, Sticky, StaysOnBottom, !Title, Borders, \
-      BorderColorset 4, HighlightBorderColorset 4
-Style /dev/video0 !Title, !Borders, Sticky, StaysOnTop
+      BorderColorset 4, HighlightBorderColorset 4, ClickToFocus
+Style /dev/video0 !Title, !Borders, Sticky, StaysOnTop, WindowListSkip
 Style grdc MiniIcon "", !Title, Borders, Sticky, StaysOnBottom, WindowListSkip, \
-      BorderColorset 4, HighlightBorderColorset 4
+      BorderColorset 4, HighlightBorderColorset 4, NeverFocus
 Style Kicad StartsOnPage 1 1, SkipMapping
+Style Gimp MiniIcon $[FVWM_USERDIR]/gimp.png, !Title, SkipMapping, \
+      StartsOnPage 1 0
 
 #######
 # 3: Colorsets
@@ -258,21 +258,21 @@ MenuStyle * AutomaticHotKeys
 # window or using alt-f1 (or menu).
 DestroyMenu MenuFvwmRoot
 AddToMenu   MenuFvwmRoot "Fvwm" Title
++ "Au&dacity%$[FVWM_USERDIR]/audacity.png%" Exec exec audacity
++ "E&macs%$[FVWM_USERDIR]/emacs.png%" Exec exec emacs
++ "&Firefox%$[FVWM_USERDIR]/firefox.png%" Exec exec firefox -offline
++ "&Gimp%$[FVWM_USERDIR]/gimp.png%" Exec exec gimp
++ "Kic&ad%$[FVWM_USERDIR]/kicad.png%" Exec exec kicad
++ "&Shotcut%$[FVWM_USERDIR]/shotcut.png%" Exec exec shotcut --fullscreen
 + "Ter&minal%$[FVWM_USERDIR]/xterm.png%" Exec exec env LC_CTYPE=en_US.UTF-8 \
   xterm -name RealXTerm
-+ "&Shotcut%$[FVWM_USERDIR]/shotcut.png%" Exec exec shotcut --fullscreen
-+ "&Firefox%$[FVWM_USERDIR]/firefox.png%" Exec exec firefox -offline
-+ "&Tor-Browser%$[FVWM_USERDIR]/tor16.png%" Exec exec tor-browser
-+ "&Emacs%$[FVWM_USERDIR]/emacs.png%" Exec exec emacs
-+ "Kic&ad%$[FVWM_USERDIR]/kicad.png%" Exec exec kicad
++ "Tor-Bro&wser%$[FVWM_USERDIR]/tor16.png%" Exec exec tor-browser
 + "" Nop
-+ "Fvwm&Console%icons/terminal.png%" Module FvwmConsole \
-  -terminal $[infostore.terminal]
 + "Window&Ops%icons/apps.png%" Popup MenuWindowOps
 + "" Nop
 + "English%icons/apps.png%" Exec exec xkbcomp -I$HOME/.xkb/ \
   $HOME/.xkb/keymap/xkbtest $DISPLAY
-+ "Russian%icons/apps.png%" Exec exec setxkbmap ru
++ "R&ussian%icons/apps.png%" Exec exec setxkbmap ru
 + "" Nop
 + "&Restart%icons/restart.png%" Restart
 + "Quit%icons/quit.png%" Quit

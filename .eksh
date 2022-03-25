@@ -28,6 +28,12 @@ alias apr='apropos'
 alias ffprobe='ffprobe -hide_banner'
 alias ffmpeg='ffmpeg -hide_banner'
 alias dg='`which git` --git-dir=$HOME/.dots/ --work-tree=$HOME'
+alias pfreload='doas pfctl -f /etc/pf.conf'
+alias matlock='xlock -mode matrix +usefirst -delay 6800'
+alias zleep='zzz & matlock'
+alias zombie='ZZZ & matlock'
+alias vidprep='doas sysctl kern.{audio,video}.record=1'
+alias viddone='doas sysctl kern.{audio,video}.record=0'
 
 bind '^w'=kill-region
 

@@ -8,3 +8,5 @@ make -f Makefile.bsd-wrapper install
 cd /usr/xenocara/app/xlockmore &&
     su $MAKEUSER -c 'make -f Makefile.bsd-wrapper' # Don't make as root
 make -f Makefile.bsd-wrapper install
+
+chmod 660 /dev/video0

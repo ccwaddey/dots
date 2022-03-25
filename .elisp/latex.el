@@ -1,3 +1,4 @@
+;; -*- eval: (view-mode); -*-
 (defun latex-frac (numer denom)
   "Makes a \\frac{}{} command by prompting the user."
   (interactive "sEnter numerator: \nsEnter denominator: ")
