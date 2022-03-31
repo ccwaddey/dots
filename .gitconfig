@@ -20,5 +20,9 @@
 	unmodify = restore
 	alias = config --get-regex 'alias\\..*'
 	tree = log --oneline --decorate --graph --all
+	lt = log --oneline --decorate --graph --all
 	rso = remote show origin
 	pom = push origin master
+	sh = stash
+[stash]
+	showPatch = yes
