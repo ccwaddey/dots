@@ -131,6 +131,20 @@
   (indent-for-tab-command))
 (define-key ccw-key-map "f" 'begin-function-braces)
 
+(defun insert-highlight ()
+  "Inserts a matching pair of `_{}_' and puts the cursor between them."
+  (interactive)
+  (if (not (region-active-p))
+      (progn (insert "_{}_") (backward-char 2))
+    (let ((start (region-beginning)) (end (region-end)))
+      (goto-char end)
+      (insert "}_")
+      (goto-char start)
+      (insert "_{")
+      (backward-char)
+      (set-mark-command nil)
+      (goto-char (+ end 4)))))
+
 (defun swap-windows ()
   "Swaps the other window's buffer with the current window's."
   (interactive)

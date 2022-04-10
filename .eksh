@@ -35,6 +35,7 @@ alias zleep='zzz & matlock'
 alias zombie='ZZZ & matlock'
 alias vidprep='doas sysctl kern.{audio,video}.record=1'
 alias viddone='doas sysctl kern.{audio,video}.record=0'
+alias sk='screenkey -p fixed -g 240x40+1120+210'
 
 bind '^w'=kill-region
 

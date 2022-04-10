@@ -1,6 +1,7 @@
 partial modifier_keys
 xkb_symbols "rotate" {
 	    replace key <CAPS> { [ Control_L ] };
+	    replace key <MENU> { [ Control_R ] };
 	    key <LWIN> {
 	    	type[Group1]="ONE_LEVEL",
 		symbols[Group1]=[ISO_Level5_Shift]

@@ -70,7 +70,8 @@
 
 (add-hook 'org-mode-hook
 	  (lambda ()
-	    (auto-fill-mode 70)))
+	    (auto-fill-mode 70)
+	    (define-key org-mode-map (kbd "C-c h") 'insert-highlight)))
 
 (add-hook 'grep-mode-hook
 	  (lambda ()

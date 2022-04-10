@@ -12,11 +12,6 @@
 ;; Load private stuff
 (load "~/.priv/.emacs")
 
-;; Display time
-(setq display-time-default-load-average nil)
-(setq display-time-day-and-date nil)
-(display-time)
-
 ;; Don't accidentally kill emacs
 (setq confirm-kill-emacs 'yes-or-no-p)
 
@@ -57,6 +52,9 @@
  '(custom-enabled-themes '(tango-dark))
  '(dired-use-ls-dired nil)
  '(display-buffer-base-action '((display-buffer-reuse-window display-buffer-same-window)))
+ '(display-time-24hr-format t)
+ '(display-time-default-load-average nil)
+ '(display-time-mode t)
  '(fringe-mode 0 nil (fringe))
  '(inhibit-startup-screen t)
  '(initial-buffer-choice nil)
@@ -68,7 +66,7 @@
    '(perspective markdown-mode pdf-tools gh-md rust-mode multiple-cursors smex))
  '(pdf-view-continuous t)
  '(pdf-view-resize-factor 1.1)
- '(revert-without-query '("resume\\.pdf"))
+ '(revert-without-query '("resume\\.pdf" "coverletter\\.pdf"))
  '(safe-local-variable-values '((eval set-fill-column 80)))
  '(save-place-mode t)
  '(scroll-bar-mode nil)
@@ -113,3 +111,9 @@
 (global-set-key (kbd "C-x C-b") 'persp-ibuffer)
 
 (server-start)
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )

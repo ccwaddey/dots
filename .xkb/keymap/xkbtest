@@ -4,7 +4,7 @@ xkb_keymap {
 	xkb_compat    { include "complete+lights"
 		      	//include "mousekeys"
 		      };
-	xkb_symbols   { include "pc+us+myswaps(rotate)" 
+	xkb_symbols   { include "mypc+us+myswaps(rotate)" 
 		      	//include "mygroup(switch)"
 			include "xkbtest(homerow)"
 			include "terminate(ctrl_alt_bksp)"
