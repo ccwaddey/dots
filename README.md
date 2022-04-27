@@ -1,9 +1,17 @@
 # What to do to use this configuration
 
+I recently switched to a custom window manager that's basically just a
+stripped down version of dwm. You can use it if you want by checking
+out the speck repository at
+[speck](https://github.com/ccwaddey/speck). I also switched to using
+`st` as my terminal emulator instead of xterm. These files assume
+those programs. This guide assumes you have doas set up; otherwise
+you'll have to run doas commands as root.
+
 ## Install packages
 
     doas pkg_add autoconf automake emacs firefox \
-		fvwm2 git gnupg ispell mutt poppler \
+		git gnupg ispell mutt poppler \
 		poppler-utils urlview xclip xwallpaper
 
 pkg_add will ask you some questions about flavors/versions. When it
@@ -14,7 +22,7 @@ does, answer with the following:
 - emacs: use the gtk3 flavor (maybe it will be gtk4 or higher at some
   point)
 - firefox: I don't recommend the ESR versions; use whatever language
-  you want
+  you want; also any other browser is fine
 - mutt: use the gpgme-sasl version
 - poppler: 21.12.0 (or higher if no options)
 - poppler-utils: 21.12.0 (or higher if no options)
@@ -89,46 +97,6 @@ Depending on the resolution of your display, you'll have to adjust the
 
 Add a `.emacs.el` file to your `.priv` directory. Add a file
 `perspectives` to your `~/.emacs.d` directory.
-
-### .fvwm/config
-
-#### StartFunction
-
-You need xwallpaper installed to set the wallpaper. Comment out the
-`xkbcomp` line if you don't want to use my keyboard layout (which most
-people won't want).
-
-#### InitFunction
-
-There are certain programs that get put in `~/bin` that this config
-needs to run as intended. They are `tmuxattachornew`, `mysuspend` and
-`grdc`. You'll need to `cd ~/bin` and `make grdc` to have the clock
-working. Also run `doas rcctl enable apmd` to have the auto suspend from
-mysuspend enabled.
-
-#### Russian Stuff
-
-If you don't want a Russian keyboard then you can comment out the
-various lines involving Russian stuff.
-
-#### Font Sizes
-
-You'll have to adjust the font sizes depending on your resolution. The
-places to do this are `DefaultFont ...`, `MenuStyle * Font ...` and
-`*FvwmIdent: Font ...`.
-
-#### MenuFvwmRoot
-
-Comment out the lines for programs you don't have, and add lines for
-programs you do have, along with the Icons you want if you have
-them. Also comment out the English and Russian lines (and a Nop line
-for aesthetics) if you don't want a Russian keyboard option.
-
-#### Keybindings
-
-See the section on default keybindings. If you don't want Russian and
-English shortcuts, then comment out the line that has
-`SwitchToRussian` in it.
 
 ### .gitconfig
 
@@ -242,50 +210,3 @@ characters, then download the source code for xenocara as described in
 	
 That should patch the code to just give you zeros and ones, compile it
 and install it.
-
-# Default FVWM Keybindings
-
-Note: C = Control, S = Shift, M = Alt/Meta; so CSM-m means hold
-Control, Shift and Alt/Meta and then press 'm' (the actual m key, not
-Alt/Meta).
-
-CSM-m	: Toggles showing widgets<br>
-CSM-x	: Closes window with focus<br>
-CSM-w	: Moves window with focus (using mouse)<br>
-CSM-q	: Resizes window with focus (using mouse)<br>
-CS-m	: Toggle maximization<br>
-CS-;	: Lowers current window<br>
-CS-P	: Iconifies current window (use Alt-Tab to recover)
-
-CSM-/	: Toggle Russian/English (comment out if unwanted)
-
-CS-n	: Gives information on current window
-
-CS-j	: Go down a screen<br>
-CS-k	: Go up a screen<br>
-CS-l	: Go right a screen<br>
-CS-h	: Go left a screen<br>
-CSM-h	: Go left a desktop<br>
-CSM-l	: Go right a desktop
-
-CS-c	: Center mouse pointer in screen
-
-CS-y	: Move mouse left (small)<br>
-MS-h	: Move mouse left (big)<br>
-CS-o	: Move mouse right (small)<br>
-MS-l	: Move mouse right (big)<br>
-CS-u	: Move mouse down (small)<br>
-MS-j	: Move mouse down (big)<br>
-CS-i	: Move mouse up (small)<br>
-MS-k	: Move mouse up (big)
-
-M-Tab	: Pulls up window list, releasing Alt/Meta selects current entry<br>
-CS-/	: Pulls up root menu
-
-Within a menu (the last two keyboard shortcuts), Space exits,
-Enter/Backspace selects the current entry (as well as releasing
-Alt/Meta when doing Alt/Meta-Tab), j/k go down/up an entry (as well as
-Tab/S-Tab), l enters a submenu, h exits a submenu, and typing any
-other letter that is underlined in an entry selects that entry (if
-multiple entries have the same letter underlined, then repeatedly
-typing that letter cycles through those entries; hit enter to select one).
