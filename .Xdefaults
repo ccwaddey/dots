@@ -14,7 +14,7 @@ XTerm*foreground:	rgb:ee/ee/ec
 XTerm*vt100.bellOnReset: false
 XTerm*vt100.bellIsUrgent: false
 ! Background (Slate)
-XTerm*color0:#2e3436    
+XTerm*color0:#2e3436
 ! Magenta?
 XTerm*color1:#ff4b4b
 ! Light Green
@@ -40,11 +40,7 @@ XTerm*color15:#eeeeec
 XTerm*color16:#757773
 ! Tried this for copying to clipboard, unnecessary
 ! XTerm*disallowedWindowOps: 20,21,SetXprop
-RealXTerm*fullscreen:always
-grdc*fullscreen:never
-grdc*geometry:60x9-0+0
-FvwmConsole*geometry:60x9-0-0
-XTerm*allowMouseOps:true
+XTerm*fullscreen:always
 ! Shift N makes smaller, Shift H makes bigger
 !		     Ctrl <Key> +:	insert() \n\
 !		     Ctrl <Key> -:	insert() \n\
