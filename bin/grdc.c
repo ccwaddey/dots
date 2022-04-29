@@ -193,7 +193,7 @@ main(int argc, char *argv[])
 			       tm->tm_sec, tm->tm_year + 1900, tm->tm_mon + 1, tm->tm_mday);
 		} else for (k = 0; k < 6; k++) {
 			move(0, 0);
-			strftime(mybuf, sizeof mybuf, "%a: %b %d, %G", tm);
+			strftime(mybuf, sizeof mybuf, "%a: %d %b %G", tm);
 			printw("%s", mybuf);
 			if (scrol) {
 				for(i = 0; i < 5; i++)
