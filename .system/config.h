@@ -33,7 +33,7 @@ static const Rule rules[] = {
 #define HOMEBIN "/home/me/bin/"
 
 /* commands */
-static const char *termcmd[] = { "env", "LC_CTYPE=en_US.UTF-8", HOMEBIN"st",
+static const char *termcmd[] = { HOMEBIN"st",
 	"-F", "-n", "st", "-T", "Terminal", "-e", "tmux",
 	NULL };
 static const char *emacscmd[] = { "emacs", NULL };
