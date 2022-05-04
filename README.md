@@ -4,14 +4,17 @@ I recently switched to a custom window manager that's basically just a
 stripped down version of dwm. You can use it if you want by checking
 out the speck repository at
 [speck](https://github.com/ccwaddey/speck). I also switched to using
-`st` as my terminal emulator instead of xterm. These files assume
-those programs. This guide assumes you have doas set up; otherwise
-you'll have to run doas commands as root.
+[st](https://github.com/ccwaddey/st) as my terminal emulator instead
+of xterm. These files assume those programs. Getting them is pretty
+easy though. Just `git clone` the links above, then run `make install`
+(if you're on OpenBSD); I use the package noto-fonts for st, so
+beware. This guide assumes you have doas set up; otherwise you'll have
+to run doas commands as root.
 
 ## Install packages
 
     doas pkg_add autoconf automake emacs firefox \
-		git gnupg ispell mutt poppler \
+		git gnupg ispell mutt noto-fonts poppler \
 		poppler-utils urlview xclip xwallpaper
 
 pkg_add will ask you some questions about flavors/versions. When it
@@ -55,21 +58,6 @@ but it wasn't when I copied my configs to a new laptop.
 The following files will need to be tweaked depending on your
 screen resolution (and maybe other stuff):
 
-### .Xdefaults
-
-These lines I had to add to make xterm work with my keyboard config;
-remove them if necessary:
-
-	Shift <Key>KP_Add: insert() \n\
-    Shift <Key>KP_Subtract: insert() \n\
-
-This line will need to be adjusted to center the suspend message (note
-that the message window is 233x52 on my display):
-
-    xmessage*geometry:      +554+258
-
-Adjust `XTerm*faceSize:20` to an appropriate size.
-
 ### .eksh
 
 You might want to change `CVSROOT` and `PKG_PATH` to closer
@@ -77,6 +65,8 @@ mirrors. You'll also want to create a `.priv` directory and add a
 `.alias` file to it for any private aliases.
 
 ### .emacs
+
+Add a file `perspectives` to your `~/.emacs.d` directory.
 
 The first time you open up emacs, `pdf-tools` will try to install (and
 you might get some errors loading .emacs). Fixing all this wasn't too
@@ -94,9 +84,6 @@ one, then click install.
 
 Depending on the resolution of your display, you'll have to adjust the
 `:height 200` part of the set-face-attribute line.
-
-Add a `.emacs.el` file to your `.priv` directory. Add a file
-`perspectives` to your `~/.emacs.d` directory.
 
 ### .gitconfig
 
@@ -198,7 +185,7 @@ If you're going to put .upgrade.site into the root directory as
 
 This section is not necessary, but if you want the "matrix"-style
 screensaver that is shown after you resume from a suspend to only show
-0s and 1s (like it should) instead of all the Japanese (I think?)
+0s and 1s (as it should) instead of all the Japanese (I think?)
 characters, then download the source code for xenocara as described in
 .xenodm and run
 
@@ -210,3 +197,11 @@ characters, then download the source code for xenocara as described in
 	
 That should patch the code to just give you zeros and ones, compile it
 and install it.
+
+### .xsession
+
+Comment out the lines for various things that you don't want or don't
+have installed. For example, most won't want the custom keyboard
+config, or they won't want the background set by xwallpaper (needs to
+be installed from speck or elsewhere), or they won't want to run speck
+at all. Choose your own adventure.

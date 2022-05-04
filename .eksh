@@ -16,7 +16,6 @@ export VISUAL="emacsclient -a mg"
 SMTPD='/usr/src/usr.sbin/smtpd'
 FCEDIT="$VISUAL"
 
-. ~/.priv/.alias
 alias ls="ls -AF"
 alias u='sndioctl output.level=+.1'
 alias d='sndioctl output.level=-.1'

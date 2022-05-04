@@ -1,56 +1,6 @@
 
 ! $OpenBSD: dot.Xdefaults,v 1.3 2014/07/10 10:22:59 jasper Exp $
 XTerm*loginShell:true
-XTerm*vt100.metaSendsEscape:true
-XTerm*faceName:DejaVu Sans Mono
-XTerm*faceSize:20
-XTerm*renderFont:true
-XTerm*scrollBar: false
-XTerm*pointerShape: xterm
-XTerm*highlightColor:	rgb:75/77/73
-XTerm*cursorColor:	rgb:fc/e9/4f
-XTerm*background:	rgb:2e/34/36
-XTerm*foreground:	rgb:ee/ee/ec
-XTerm*vt100.bellOnReset: false
-XTerm*vt100.bellIsUrgent: false
-! Background (Slate)
-XTerm*color0:#2e3436
-! Magenta?
-XTerm*color1:#ff4b4b
-! Light Green
-XTerm*color2:#73d216
-! Straw (Pale Yellow)
-XTerm*color3:#fce94f
-! Light Blue
-XTerm*color4:#8cc4ff
-! Lavender
-XTerm*color5:#e090d7
-! Burnt Orange
-XTerm*color6:#fcaf3e
-! Foreground (White)
-XTerm*color7:#eeeeec
-XTerm*color8:#2e3436
-XTerm*color9:#ff4b4b
-XTerm*color10:#73d216
-XTerm*color11:#fce94f
-XTerm*color12:#8cc4ff
-XTerm*color13:#e090d7
-XTerm*color14:#fcaf3e
-XTerm*color15:#eeeeec
-XTerm*color16:#757773
-! Tried this for copying to clipboard, unnecessary
-! XTerm*disallowedWindowOps: 20,21,SetXprop
-XTerm*fullscreen:always
-! Shift N makes smaller, Shift H makes bigger
-!		     Ctrl <Key> +:	insert() \n\
-!		     Ctrl <Key> -:	insert() \n\
-XTerm*VT100*translations: #override \n\
-		     Ctrl <Key>Y: insert-selection(CLIPBOARD, CUT_BUFFER0) \n\
-		     Shift <Key>KP_Add: insert() \n\
-		     Shift <Key>KP_Subtract: insert() \n\
-		     Shift Ctrl <Key>Up: larger-vt-font() \n\
-		     Shift Ctrl <Key>Down: smaller-vt-font() \n\
-		     Alt <Key>Return: insert()
 xmessage*geometry:	+554+258
 xmessage*background:	rgb:2e/34/36
 xmessage*foreground:	rgb:ee/ee/ec

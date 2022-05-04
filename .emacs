@@ -9,8 +9,6 @@
 (load "~/.elisp/convenience")
 ;; Load hooks for various modes (mostly j/k scroll up/down)
 (load "~/.elisp/hooks")
-;; Load private stuff
-(load "~/.priv/.emacs")
 
 ;; Don't accidentally kill emacs
 (setq confirm-kill-emacs 'yes-or-no-p)
