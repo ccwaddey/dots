@@ -1,7 +1,8 @@
 # public info .gitconfig
 
-[include]
-	path = ~/.priv/.gitconfig
+[user]
+	name =
+	email =
 
 [core]
 	editor = emacsclient -a mg

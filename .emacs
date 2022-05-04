@@ -1,7 +1,6 @@
 ;; -*- eval: (view-mode); -*-
-;; Don't show emacs until we alt-tab to it but be full screen then.
+;; Start in fullscreen.
 (toggle-frame-fullscreen)
-;; (iconify-frame)
 
 ;; Load latex convenience functions
 (load "~/.elisp/latex")
