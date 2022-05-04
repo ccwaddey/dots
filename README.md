@@ -13,9 +13,8 @@ to run doas commands as root.
 
 ## Install packages
 
-    doas pkg_add autoconf automake emacs firefox \
-		git gnupg ispell mutt noto-fonts poppler \
-		poppler-utils urlview xclip xwallpaper
+    doas pkg_add autoconf automake emacs firefox git ispell \
+		noto-fonts poppler poppler-utils xclip xwallpaper
 
 pkg_add will ask you some questions about flavors/versions. When it
 does, answer with the following:
@@ -24,9 +23,6 @@ does, answer with the following:
 - automake: 1.15.1 (or whatever is closest, there may be a patch)
 - emacs: use the gtk3 flavor (maybe it will be gtk4 or higher at some
   point)
-- firefox: I don't recommend the ESR versions; use whatever language
-  you want; also any other browser is fine
-- mutt: use the gpgme-sasl version
 - poppler: 21.12.0 (or higher if no options)
 - poppler-utils: 21.12.0 (or higher if no options)
 
@@ -94,13 +90,6 @@ following in it:
 		name = Your Name
 		email = you@youremail.whatever
 
-### .muttrc
-
-This file will be harmless if you don't download mutt, but be prepared
-to do some configuring if you do, specifically adding a .muttrc file
-to your .priv directory. The packages gnupg, mutt, and urlview are for
-this config.
-
 ### .tmux.conf
 
 You need to have xclip installed to get copy/paste working right.
@@ -127,12 +116,6 @@ remotes. Finally it allows connections to the most frequent tor
 network port, port 9001. Adjust the macros at the top to your
 situation, and install it at /etc/pf.conf, owned by root:wheel and
 mode 600.
-
-### .urlview
-
-This is only for mutt. It requires urlview.sh in bin. You should run
-
-    mkdir .linksurlview
 
 ### .xkb/*
 
@@ -200,8 +183,7 @@ and install it.
 
 ### .xsession
 
-Comment out the lines for various things that you don't want or don't
-have installed. For example, most won't want the custom keyboard
-config, or they won't want the background set by xwallpaper (needs to
-be installed from speck or elsewhere), or they won't want to run speck
-at all. Choose your own adventure.
+Uncomment out the lines for various things that you want or have
+installed. For example, some might want the custom keyboard config, or
+the background set by xwallpaper, or whatever. Choose your own
+adventure.
