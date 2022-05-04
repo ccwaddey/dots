@@ -9,8 +9,6 @@
 (load "~/.elisp/convenience")
 ;; Load hooks for various modes (mostly j/k scroll up/down)
 (load "~/.elisp/hooks")
-;; Load private stuff
-(load "~/.priv/.emacs")
 
 ;; Don't accidentally kill emacs
 (setq confirm-kill-emacs 'yes-or-no-p)
@@ -68,6 +66,7 @@
    '(perspective markdown-mode pdf-tools gh-md rust-mode multiple-cursors smex))
  '(pdf-view-continuous t)
  '(pdf-view-resize-factor 1.1)
+ '(persp-mode-prefix-key "x")
  '(revert-without-query '("resume\\.pdf" "coverletter\\.pdf"))
  '(safe-local-variable-values '((eval set-fill-column 80)))
  '(save-place-mode t)
@@ -105,12 +104,14 @@
 (define-key mc-map (kbd "m") 'mc/mark-next-like-this)
 (define-key mc-map (kbd "p") 'mc/mark-previous-like-this)
 
+(require 'perspective)
 (setq persp-state-default-file "~/.emacs.d/perspectives")
 (setq persp-sort 'access)
 (setq persp-modestring-short t)
 (add-hook 'kill-emacs-hook #'persp-state-save)
 (persp-state-load "~/.emacs.d/perspectives")
 (global-set-key (kbd "C-x C-b") 'persp-ibuffer)
+(persp-mode)
 
 (server-start)
 (custom-set-faces
@@ -118,4 +119,4 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:inherit nil :extend nil :stipple nil :background "#2e3436" :foreground "#eeeeec" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 203 :width normal :foundry "PfEd" :family "NotoSansMono")))))
+ '(default ((t (:inherit nil :extend nil :stipple nil :background "#2e3436" :foreground "#eeeeec" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 100 :width normal :foundry "PfEd" :family "NotoSansMono")))))
