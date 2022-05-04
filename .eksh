@@ -36,6 +36,7 @@ alias vidprep='doas sysctl kern.{audio,video}.record=1'
 alias viddone='doas sysctl kern.{audio,video}.record=0'
 alias sk='screenkey -p fixed -g 1360x60+0+708 2>/dev/null &'
 alias ru='doas sh /etc/netstart urtwn0'
+alias ghr='doas pfctl -t githubassets -T replace $(dig github.githubassets.com +short) && doas pfctl -t githubaddrs -T replace $(dig github.com +short)'
 
 bind '^w'=kill-region
 
