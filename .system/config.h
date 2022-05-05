@@ -5,7 +5,7 @@ static const unsigned int borderpx = 4;        /* border pixel of windows */
 static const unsigned int snap     = 32;       /* snap pixel */
 static const char col_unfocus[]  = "rgb:67/67/67";
 static const char col_focus[]    = "rgb:ce/5c/00";
-static const int yreserve = 60, xreserve = 0;
+static const int yreserve = 0, xreserve = 0;
 
 /* tagging */
 static const unsigned int numtags = 4;
@@ -33,8 +33,7 @@ static const Rule rules[] = {
 #define HOMEBIN "/home/me/bin/"
 
 /* commands */
-static const char *termcmd[] = { HOMEBIN"st",
-	"-F", "-n", "st", "-T", "Terminal", "-e", "tmux",
+static const char *termcmd[] = { HOMEBIN"st", "-F", "-n", "st", "-e", "tmux",
 	NULL };
 static const char *emacscmd[] = { "emacs", NULL };
 static const char *audacitycmd[] = { "audacity", NULL };
