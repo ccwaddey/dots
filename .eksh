@@ -43,3 +43,13 @@ bind '^w'=kill-region
 sp() {
 	echo $1 | spell
 }
+
+goodpass() {
+    local -i16 hex
+
+    for i in $(seq 1 16)
+    do
+	hex=$((RANDOM%95+20)) && printf "\x${hex#*#}"
+    done
+    echo
+}
