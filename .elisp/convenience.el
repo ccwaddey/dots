@@ -162,6 +162,6 @@
   "Toggles the font size between 200 and 350 for recording purposes."
   (interactive)
   (if ccw-font-is-big
-      (set-face-attribute 'default nil :height 200)
-    (set-face-attribute 'default nil :height 350))
+      (set-face-attribute 'default nil :height 100)
+    (set-face-attribute 'default nil :height 200))
   (setq ccw-font-is-big (not ccw-font-is-big)))
