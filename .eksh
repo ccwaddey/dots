@@ -49,7 +49,7 @@ goodpass() {
 
     for i in $(seq 1 16)
     do
-	hex=$((RANDOM%95+20)) && printf "\x${hex#*#}"
+	hex=$((RANDOM%94+33)) && printf "\x${hex#*#}"
     done
     echo
 }
