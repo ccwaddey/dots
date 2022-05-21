@@ -3,7 +3,7 @@
 # Custom keyboard config & sensitive mouse
 xkbcomp -I$HOME/.xkb $HOME/.xkb/keymap/xkbtest $DISPLAY
 xset r rate 400 25
-xset m 3/1 0
+xset m 5/2 0
 # Initial programs (clock, terminal, emacs)
 export LC_CTYPE=en_US.UTF-8
 $HOME/bin/st -n grdc -T grdc -g 60x9+0+0 -e $HOME/bin/grdc &
