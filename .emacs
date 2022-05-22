@@ -66,7 +66,6 @@
    '(perspective markdown-mode pdf-tools gh-md rust-mode multiple-cursors smex))
  '(pdf-view-continuous t)
  '(pdf-view-resize-factor 1.1)
- '(persp-mode-prefix-key "x")
  '(revert-without-query '("resume\\.pdf" "coverletter\\.pdf"))
  '(safe-local-variable-values '((eval set-fill-column 80)))
  '(save-place-mode t)
@@ -109,9 +108,9 @@
 (setq persp-sort 'access)
 (setq persp-modestring-short t)
 (add-hook 'kill-emacs-hook #'persp-state-save)
+(customize-set-variable 'persp-mode-prefix-key (kbd "C-x x"))
 (persp-state-load "~/.emacs.d/perspectives")
 (global-set-key (kbd "C-x C-b") 'persp-ibuffer)
-(persp-mode)
 
 (server-start)
 (custom-set-faces
