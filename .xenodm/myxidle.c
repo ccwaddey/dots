@@ -82,7 +82,7 @@ main(int argc, char *argv[]) {
 	syslog(LI, "exec'ing xidle");
 	closelog();
 	rv = execl(XIDLEPATH, "xidle", "-display", ":0", "-no", "-timeout",
-	    "240", "-program", "/usr/sbin/apm -S", NULL);
+	    "240", "-program", "/usr/sbin/apm -Z", NULL);
 	/* Shouldn't get to this */
 	syslog(LE | LOG_AUTH, "myxidle failed to exec\n");
 	return rv;
