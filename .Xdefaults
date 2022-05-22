@@ -1,8 +1,9 @@
 
 ! $OpenBSD: dot.Xdefaults,v 1.3 2014/07/10 10:22:59 jasper Exp $
 XTerm*loginShell:true
-xmessage*geometry:	+554+258
 xmessage*background:	rgb:2e/34/36
 xmessage*foreground:	rgb:ee/ee/ec
 xmessage*Title: System Message
 xmessage*scrollVertical: never
+xmessage*center: true
+xmessage*font: -adobe-helvetica-bold-r-normal--18-180-75-75-p-103-iso8859-1
