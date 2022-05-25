@@ -152,6 +152,12 @@ This is only for mutt. It requires urlview.sh in bin. You should run
 You don't need to worry about anything in here unless you're changing
 your keyboard layout. Just comment out one line in .fvwm.
 
+This does allow you to use pointer keys; they are enabled with Win+P;
+selecting first, middle and right mouse buttons is done with Win+/ and
+Win+; and Win+N (normally that's /, * and - on the numpad). To click,
+do Win+K (normally 5), and for a keypress do Win+SPC (normally 0) and
+keyrelease do Win+' (normally .)
+
 ### bin/*
 
 If you want the (modified) grdc program working, simply `cd ~/bin` and
