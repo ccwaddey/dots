@@ -39,6 +39,8 @@ alias ru='doas sh /etc/netstart urtwn0'
 alias ghr='doas pfctl -t githubassets -T replace $(dig github.githubassets.com +short && dig api.github.com +short) && doas pfctl -t githubaddrs -T replace $(dig github.com +short)'
 alias nt='netstat -p tcp'
 alias pfst='doas pfctl -s info | head -n 1'
+alias flushtemp='doas pfctl -a temp -F all'
+alias pime='doas cu -l cuaU0 -s 115200'
 
 bind '^w'=kill-region
 
